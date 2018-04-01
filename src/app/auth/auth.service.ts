@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiUrl, KeepSession } from '../config';
-import { User } from '../models/user';
-import { Session } from '../models/session';
+import { User } from '../models/user/user';
+import { Session } from '../models/session/session';
+import {Observable} from 'rxjs/Observable';
+import { LoginForm } from '../views/login/login.component';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -10,7 +12,6 @@ const httpOptions = {
 
 @Injectable()
 export class AuthService {
-
   public User: User;
   public Authenticated: boolean;
   public Token: string;
@@ -27,8 +28,13 @@ export class AuthService {
     this.Authenticated = this.ping();
   }
 
-  public Register(user: User): User {
-    const user = this.http.post(this.url, user, httpOptions) as User;
+  public Register(reqUser: User): User {
+    let user: User;
+
+    (this.http.post(this.url, reqUser, httpOptions) as Observable<User>)
+      .subscribe(res => {
+        user = res;
+      });
 
     if (user.error) {
       throw user.error;
@@ -37,20 +43,22 @@ export class AuthService {
     return user;
   }
 
-  public Login(user: User): void {
-    const res = this.http.post(this.url + '/login', user, httpOptions) as Session;
+  public Login(form: LoginForm): void {
+    (this.http.post(this.url + '/login', form, httpOptions) as Observable<Session>)
+      .subscribe((session: Session) => {
+        if (session.error) {
+          throw new Error(session.error);
+        }
 
-    if (res.error) {
-      throw res.error;
-    }
+        this.Token = session.token;
+        this.ExpireAt = session.expireAt;
+        this.Authenticated = true;
 
-    this.Token = res.token;
-    this.ExpireAt = res.expireAt;
-
-    if (KeepSession) {
-      localStorage.token = res.token;
-      localStorage.expireAt = res.expireAt.toString();
-    }
+        if (KeepSession) {
+          localStorage.token = session.token;
+          localStorage.expireAt = session.expireAt.toString();
+        }
+      });
   }
 
   public Logout(): void {
@@ -64,10 +72,17 @@ export class AuthService {
   }
 
   private ping(): boolean {
-    const res = this.http.get(ApiUrl + '/sessions/ping', new HttpHeaders({
-      'Authorization': `Bearer ${this.Token}`
-    })) as any;
+    const options = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.Token}`
+      })
+    };
 
-    return !!res.session;
+    (this.http.get(ApiUrl + '/sessions/ping', options) as any)
+      .subscribe(res => {
+      this.Authenticated = !!res.session;
+    });
+
+    return this.Authenticated;
   }
 }

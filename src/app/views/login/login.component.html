@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<div id="Login">
+  <label>
+    {{ t.Username }}
+    <input
+      [(ngModel)]="user.username"
+      placeholder="{{ t.Username }}">
+  </label>
+
+  <label>
+    {{ t.Password }}
+    <input
+      type="password"
+      [(ngModel)]="user.password"
+      placeholder="{{ t.Password }}">
+  </label>
+
+  <button (click)="login()">{{ t.Login }}</button>
+</div>

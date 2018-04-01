@@ -1,0 +1,24 @@
+<table class="table">
+  <tbody>
+  <tr>
+    <td>{{ t.FullName }}</td>
+    <td>{{ user.identity.firstName }} {{ user.identity.lastName }}</td>
+  </tr>
+  <tr>
+    <td>{{ t.Username }}</td>
+    <td>{{ user.username }}</td>
+  </tr>
+  <tr>
+    <td>{{ t.Email }}</td>
+    <td><a href="mailto:{{ user.identity.email }}">{{ user.identity.email }}</a></td>
+  </tr>
+  <tr>
+    <td>{{ t.Rank }}</td>
+    <td>{{ t[Rank[user.rank]] }}</td>
+  </tr>
+  <tr>
+    <td>{{ t.PhoneNumber }}</td>
+    <td><a href="tel:{{ user.identity.phoneNumber }}">{{ user.identity.phoneNumber }}</a></td>
+  </tr>
+  </tbody>
+</table>

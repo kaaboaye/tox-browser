@@ -1,0 +1,19 @@
+<table class="table">
+  <tbody>
+    <tr *ngFor="let person of staff">
+      <td>
+        {{ person.firstName }}
+        {{ person.lastName }}
+      </td>
+      <td>
+        <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+      </td>
+      <td>
+        <a href="tel:{{ person.phoneNumber }}">{{ person.phoneNumber }}</a>
+      </td>
+      <td>
+        <button mat-raised-button (click)="patchPerson(person)">{{ t.Edit }}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

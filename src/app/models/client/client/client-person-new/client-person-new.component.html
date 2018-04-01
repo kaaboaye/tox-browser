@@ -1,0 +1,29 @@
+<h2>{{ t.AddContact }}</h2>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.FirstName }}"
+         [(ngModel)]="person.firstName">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.LastName }}"
+         [(ngModel)]="person.lastName">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.Email }}"
+         [(ngModel)]="person.email">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.PhoneNumber }}"
+         [(ngModel)]="person.phoneNumber">
+</mat-form-field>
+
+<button mat-button (click)="add()">{{ t.Add }}</button>
+
+

@@ -1,0 +1,10 @@
+<h1>{{ t.Clients }}</h1>
+
+<mat-tab-group (selectedTabChange)="tabChanged($event)">
+  <mat-tab label="{{ t.List }}">
+    <app-clients-list #list></app-clients-list>
+  </mat-tab>
+  <mat-tab label="{{ t.Add }}">
+    <app-client-new></app-client-new>
+  </mat-tab>
+</mat-tab-group>
