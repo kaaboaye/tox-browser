@@ -16,17 +16,29 @@ import { MeComponent } from './views/me/me.component';
 import { UserService } from './models/user/user.service';
 import { UserComponent } from './models/user/user.component';
 import { ClientsComponent } from './views/clients/clients.component';
-import { ClientComponent } from './models/client/client/client.component';
-import { ClientNewComponent } from './models/client/client-new/client-new.component';
+import { ClientComponent } from './views/clients/client/client.component';
 import { ClientService } from './models/client/client.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatDialogModule, MatExpansionModule, MatInputModule, MatTableModule, MatTabsModule } from '@angular/material';
-import { ClientsListComponent } from './models/client/clients-list/clients-list.component';
-import { StaffListComponent } from './models/person/staff-list/staff-list.component';
+import {
+  MatButtonModule, MatChipsModule, MatDialogModule, MatExpansionModule, MatInputModule, MatSnackBarModule, MatTableModule,
+  MatTabsModule
+} from '@angular/material';
+import { ClientsListComponent } from './views/clients/clients-list/clients-list.component';
+import { StaffListComponent } from './views/clients/client/staff-list/staff-list.component';
 import { PeopleService } from './models/person/people.service';
 import { PersonComponent } from './models/person/person/person.component';
-import { ClientPersonNewComponent } from './models/client/client/client-person-new/client-person-new.component';
-import { StaffListPatchComponent } from './models/person/staff-list/staff-list-patch/staff-list-patch.component';
+import { ClientPersonNewComponent } from './views/clients/client/client-person-new/client-person-new.component';
+import { StaffListPatchComponent } from './views/clients/client/staff-list/staff-list-patch/staff-list-patch.component';
+import { HttpErrorHandlerProvider } from './http-error-handler';
+import { ClientNewComponent } from './views/clients/client-new/client-new.component';
+import { JobsComponent } from './views/jobs/jobs.component';
+import { JobsListComponent } from './views/jobs/jobs-list/jobs-list.component';
+import { JobsService } from './models/job/jobs.service';
+import { JobNewComponent } from './views/jobs/job-new/job-new.component';
+import { DevicesComponent } from './views/devices/devices.component';
+import { DeviceNewComponent } from './views/devices/device-new/device-new.component';
+import { DevicesService } from './models/device/devices.service';
+import { DevicesListComponent } from './views/devices/devices-list/devices-list.component';
 
 
 @NgModule({
@@ -45,11 +57,20 @@ import { StaffListPatchComponent } from './models/person/staff-list/staff-list-p
     StaffListComponent,
     PersonComponent,
     ClientPersonNewComponent,
-    StaffListPatchComponent
+    StaffListPatchComponent,
+    JobsComponent,
+    JobsListComponent,
+    DevicesListComponent,
+    JobNewComponent,
+    DevicesComponent,
+    DeviceNewComponent
   ],
   entryComponents: [
     ClientPersonNewComponent,
-    StaffListPatchComponent
+    StaffListPatchComponent,
+    ClientNewComponent,
+    JobNewComponent,
+    DeviceNewComponent
   ],
   imports: [
     BrowserModule,
@@ -62,15 +83,18 @@ import { StaffListPatchComponent } from './models/person/staff-list/staff-list-p
     MatButtonModule,
     MatTableModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule,
+    MatChipsModule
   ],
   providers: [
     AuthService,
-    AuthGuard,
-    NotAuthGuard,
     UserService,
     ClientService,
-    PeopleService
+    PeopleService,
+    HttpErrorHandlerProvider,
+    JobsService,
+    DevicesService
   ],
   bootstrap: [AppComponent]
 })

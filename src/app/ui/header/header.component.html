@@ -7,19 +7,31 @@
       </li>
     </ul>
     <ul *ngIf="this.auth.Authenticated" class="nav navbar-nav">
+
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="clients">{{ t.Clients }}</a>
+        <a class="nav-link" routerLink="{{ Paths.Jobs }}">{{ t.Jobs }}</a>
       </li>
+
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="me">{{ t.Me }}</a>
+        <a class="nav-link" routerLink="{{ Paths.Clients }}">{{ t.Clients }}</a>
       </li>
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="{{ Paths.Devices }}">{{ t.Devices }}</a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="{{ Paths.Me }}">{{ t.Me }}</a>
+      </li>
+
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" (click)="auth.Logout()">{{ t.Logout }}</a>
       </li>
+
     </ul>
     <ul *ngIf="!this.auth.Authenticated" class="nav navbar-nav">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="login">{{ t.Login }}</a>
+        <a class="nav-link" routerLink="{{ Paths.Login }}">{{ t.Login }}</a>
       </li>
     </ul>
   </div>

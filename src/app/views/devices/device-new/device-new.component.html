@@ -1,0 +1,23 @@
+<h2>{{ t.AddDevice }}</h2>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.DeviceType }}"
+         [(ngModel)]="device.type">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.DeviceDenotement }}"
+         [(ngModel)]="device.denotement">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.SerialNumber }}"
+         [(ngModel)]="device.serialNumber">
+</mat-form-field>
+
+<button mat-button (click)="add()">{{ t.Add }}</button>
+
+

@@ -1,0 +1,7 @@
+<h1 *ngIf="!noHeader">{{ t.Jobs }}</h1>
+
+<mat-chip-list>
+  <mat-chip color="primary" selected="true" (click)="addJob()">{{ t.Add }}</mat-chip>
+</mat-chip-list>
+
+<app-jobs-list #jobsList [client]="client"></app-jobs-list>

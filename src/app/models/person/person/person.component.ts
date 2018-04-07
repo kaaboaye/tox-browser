@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Person } from '../person';
-import { Strings } from '../../../../strings';
+import { Strings } from '../../../strings';
 
 @Component({
   selector: 'app-person',

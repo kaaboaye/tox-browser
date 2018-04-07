@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
-import { Strings } from '../../../strings';
+import { Strings } from '../../strings';
+import { Paths } from '../../routes';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,13 @@ import { Strings } from '../../../strings';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  t = Strings;
 
   constructor(
-    private auth: AuthService
+    public auth: AuthService
   ) { }
+
+  t = Strings;
+  Paths = Paths;
 
   ngOnInit() {
   }

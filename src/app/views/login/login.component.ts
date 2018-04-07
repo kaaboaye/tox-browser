@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../models/user/user';
-import { Strings } from '../../../strings';
+import { Strings } from '../../strings';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
   user: LoginForm;
 
   constructor(
-    private auth: AuthService,
-    private router: Router
+    private auth: AuthService
   ) { }
 
   ngOnInit() {

@@ -1,0 +1,49 @@
+<div *ngIf="client">
+  <h2>{{ client.name }}</h2>
+  <p>
+    {{ client.street}} <br/>
+    {{ client.postalCode}}, {{client.city}}
+  </p>
+
+  <mat-accordion>
+
+    <mat-expansion-panel (opened)="staffOpened()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ t.Staff }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-chip-list>
+        <mat-chip color="primary" selected="true" (click)="addPerson(client)">{{ t.Add }}</mat-chip>
+      </mat-chip-list>
+
+      <app-staff-list #staffList [clientId]="client.id"></app-staff-list>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="jobsOpened()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ t.Jobs }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-jobs #jobs [client]="client" [noHeader]="true"></app-jobs>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ t.Devices }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-devices #devices [client]="client" [noHeader]="true"></app-devices>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</div>

@@ -5,6 +5,9 @@ import { User } from '../models/user/user';
 import { Session } from '../models/session/session';
 import {Observable} from 'rxjs/Observable';
 import { LoginForm } from '../views/login/login.component';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { Strings } from '../strings';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,7 +22,11 @@ export class AuthService {
 
   private url = ApiUrl + '/users';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private snackBar: MatSnackBar
+  ) {
     if (KeepSession) {
       this.Token = localStorage.token || undefined;
       this.ExpireAt = localStorage.expireAt || undefined;
@@ -47,7 +54,17 @@ export class AuthService {
     (this.http.post(this.url + '/login', form, httpOptions) as Observable<Session>)
       .subscribe((session: Session) => {
         if (session.error) {
-          throw new Error(session.error);
+          let message: string;
+
+          if (Strings[session.error.message]) {
+            message = Strings[session.error.message];
+          } else {
+            message = Strings.UnknownError;
+          }
+
+          this.snackBar.open(message, Strings.Ok);
+
+          return;
         }
 
         this.Token = session.token;
@@ -58,6 +75,8 @@ export class AuthService {
           localStorage.token = session.token;
           localStorage.expireAt = session.expireAt.toString();
         }
+
+        this.router.navigate(['']);
       });
   }
 
@@ -69,6 +88,8 @@ export class AuthService {
     this.User = undefined;
     this.Token = undefined;
     this.Authenticated = false;
+
+    this.router.navigate(['login']);
   }
 
   private ping(): boolean {

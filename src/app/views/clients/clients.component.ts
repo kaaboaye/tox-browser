@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Strings } from '../../../strings';
-import { MatTabChangeEvent } from '@angular/material';
-import { ClientsListComponent } from '../../models/client/clients-list/clients-list.component';
+import { Strings } from '../../strings';
+import { MatDialog, MatTabChangeEvent } from '@angular/material';
+import { ClientsListComponent } from './clients-list/clients-list.component';
+import { ClientPersonNewComponent } from './client/client-person-new/client-person-new.component';
+import { ClientService } from '../../models/client/client.service';
+import { ClientNewComponent } from './client-new/client-new.component';
+import { Client } from '../../models/client/client';
 
 @Component({
   selector: 'app-clients',
@@ -10,7 +14,10 @@ import { ClientsListComponent } from '../../models/client/clients-list/clients-l
 })
 export class ClientsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+    public clientService: ClientService
+  ) { }
 
   @ViewChild('list') list: ClientsListComponent;
 
@@ -19,9 +26,15 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
   }
 
-  tabChanged(e: MatTabChangeEvent) {
-    if (e.index === 0) {
-      this.list.Refresh();
-    }
+  addClient() {
+    const dialog = this.dialog.open(ClientNewComponent);
+
+    dialog.afterClosed().subscribe((newClient: Client) => {
+      this.clientService.Post(newClient)
+        .subscribe((client: Client) => {
+          this.list.clients.push(client);
+          this.list.Refresh();
+        });
+    });
   }
 }
