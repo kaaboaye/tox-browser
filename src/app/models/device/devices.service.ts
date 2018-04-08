@@ -22,7 +22,7 @@ export class DevicesService {
   };
 
   static url(client: Client): string {
-    return `${ ApiUrl }/clients/${ client.id }/jobs`;
+    return `${ ApiUrl }/clients/${ client.id }/devices`;
   }
 
   GetDevices(client: Client): Observable<any> {

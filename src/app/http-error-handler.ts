@@ -31,6 +31,14 @@ export class HttpErrorHandler implements HttpInterceptor {
               this.router.navigate(['login']);
               break;
 
+            case 404:
+              message = Strings[err.error.message];
+
+              if (!message) {
+                message = Strings.NotFound;
+              }
+              break;
+
             case 500:
               message = Strings.InternalError;
               break;

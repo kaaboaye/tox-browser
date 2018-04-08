@@ -37,5 +37,7 @@ export const Strings = {
   AddDevice: 'Dodaj urządzenie',
   DeviceType: 'Typ urządzenia',
   DeviceDenotement: 'Oznaczenie',
-  SerialNumber: 'Numer seryjny'
+  SerialNumber: 'Numer seryjny',
+  NoSuchClient: 'Podany klient nie istnieje',
+  NotFound: 'Nie zaleziono'
 };
