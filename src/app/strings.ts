@@ -39,5 +39,6 @@ export const Strings = {
   DeviceDenotement: 'Oznaczenie',
   SerialNumber: 'Numer seryjny',
   NoSuchClient: 'Podany klient nie istnieje',
-  NotFound: 'Nie zaleziono'
+  NotFound: 'Nie zaleziono',
+  Client: 'Klient'
 };

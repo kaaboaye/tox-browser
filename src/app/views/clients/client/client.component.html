@@ -18,7 +18,7 @@
         <mat-chip color="primary" selected="true" (click)="addPerson(client)">{{ t.Add }}</mat-chip>
       </mat-chip-list>
 
-      <app-staff-list #staffList [clientId]="client.id"></app-staff-list>
+      <app-staff-list #staff [clientId]="client.id"></app-staff-list>
 
     </mat-expansion-panel>
 
@@ -33,7 +33,7 @@
 
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel (opened)="devicesOpened()">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ t.Devices }}

@@ -1,5 +1,19 @@
 <h2>{{ t.AddDevice }}</h2>
 
+<mat-form-field *ngIf="askOwner">
+  <mat-select
+    placeholder="{{ t.Client }}"
+    [(ngModel)]="device.owner">
+
+    <mat-option
+      *ngFor="let client of clients"
+      [value]="client">
+
+      {{ client.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 <mat-form-field>
   <input matInput
          placeholder="{{ t.DeviceType }}"

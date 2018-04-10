@@ -7,6 +7,7 @@ import { ClientPersonNewComponent } from './client-person-new/client-person-new.
 import { PeopleService } from '../../../models/person/people.service';
 import { JobsListComponent } from '../../jobs/jobs-list/jobs-list.component';
 import { JobsComponent } from '../../jobs/jobs.component';
+import { DevicesComponent } from '../../devices/devices.component';
 
 @Component({
   selector: 'app-client',
@@ -22,18 +23,23 @@ export class ClientComponent implements OnInit {
 
   t = Strings;
   @Input() client: Client;
-  @ViewChild('staffList') staffList: StaffListComponent;
+  @ViewChild('staff') staff: StaffListComponent;
   @ViewChild('jobs') jobs: JobsComponent;
+  @ViewChild('devices') devices: DevicesComponent;
 
   ngOnInit() {
   }
 
   staffOpened() {
-    this.staffList.Pull();
+    this.staff.Pull();
   }
 
   jobsOpened() {
     this.jobs.Pull();
+  }
+
+  devicesOpened() {
+    this.devices.Pull();
   }
 
   addPerson(client: Client) {
@@ -44,10 +50,10 @@ export class ClientComponent implements OnInit {
     dialog.afterClosed().subscribe(contact => {
       this.peopleService.Post(contact)
         .subscribe(newContact => {
-          this.staffList.staff.push(newContact);
+          this.staff.staff.push(newContact);
         });
 
-      this.staffList.Pull();
+      this.staff.Pull();
     });
   }
 }

@@ -20,7 +20,6 @@ export class DevicesComponent implements OnInit {
   ) { }
 
   t = Strings;
-  devices: Device[];
 
   @Input() client: Client;
   @Input() noHeader = false;
@@ -34,6 +33,10 @@ export class DevicesComponent implements OnInit {
     }
   }
 
+  Pull() {
+    this.devicesList.Pull();
+  }
+
   addDevice() {
     const dialog = this.dialog.open(DeviceNewComponent, {
       data: this.client
@@ -42,7 +45,7 @@ export class DevicesComponent implements OnInit {
     dialog.afterClosed().subscribe((newDevice: Device) => {
 
       this.devicesService.Post(newDevice).subscribe(device => {
-        this.devices.push(device);
+        this.devicesList.devices.push(device);
         this.devicesList.Pull();
       });
 

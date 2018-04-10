@@ -20,7 +20,7 @@ import { ClientComponent } from './views/clients/client/client.component';
 import { ClientService } from './models/client/client.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatChipsModule, MatDialogModule, MatExpansionModule, MatInputModule, MatSnackBarModule, MatTableModule,
+  MatButtonModule, MatChipsModule, MatDialogModule, MatExpansionModule, MatInputModule, MatSelectModule, MatSnackBarModule, MatTableModule,
   MatTabsModule
 } from '@angular/material';
 import { ClientsListComponent } from './views/clients/clients-list/clients-list.component';
@@ -85,7 +85,8 @@ import { DevicesListComponent } from './views/devices/devices-list/devices-list.
     MatExpansionModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSelectModule
   ],
   providers: [
     AuthService,

@@ -1,3 +1,45 @@
-<p>
-  devices-list works!
-</p>
+<table class="table">
+
+  <thead class="thead-light">
+    <tr>
+
+      <td>
+        {{ t.DeviceType }}
+      </td>
+
+      <td>
+        {{ t.DeviceDenotement }}
+      </td>
+
+      <td>
+        {{ t.SerialNumber }}
+      </td>
+
+      <td *ngIf="client.id === 0">
+        {{ t.Client }}
+      </td>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let device of devices">
+
+      <td>
+        {{ device.type }}
+      </td>
+
+      <td>
+        {{ device.denotement }}
+      </td>
+
+      <td>
+        {{ device.serialNumber }}
+      </td>
+
+      <td *ngIf="client.id === 0">
+        {{ device.owner.name }}
+      </td>
+    </tr>
+  </tbody>
+</table>
