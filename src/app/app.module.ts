@@ -39,6 +39,12 @@ import { DevicesComponent } from './views/devices/devices.component';
 import { DeviceNewComponent } from './views/devices/device-new/device-new.component';
 import { DevicesService } from './models/device/devices.service';
 import { DevicesListComponent } from './views/devices/devices-list/devices-list.component';
+import { DeviceComponent } from './views/device/device.component';
+import { PersonDialogComponent } from './models/person/person/person-dialog/person-dialog.component';
+import { JobComponent } from './views/job/job.component';
+import { JobOverviewComponent } from './views/job/job-overview/job-overview.component';
+import { JobRegisterComponent } from './views/job/job-register/job-register.component';
+import { JobRegistrationService } from './models/job-registration/job-registration.service';
 
 
 @NgModule({
@@ -63,14 +69,20 @@ import { DevicesListComponent } from './views/devices/devices-list/devices-list.
     DevicesListComponent,
     JobNewComponent,
     DevicesComponent,
-    DeviceNewComponent
+    DeviceNewComponent,
+    DeviceComponent,
+    PersonDialogComponent,
+    JobComponent,
+    JobOverviewComponent,
+    JobRegisterComponent
   ],
   entryComponents: [
     ClientPersonNewComponent,
     StaffListPatchComponent,
     ClientNewComponent,
     JobNewComponent,
-    DeviceNewComponent
+    DeviceNewComponent,
+    PersonDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +107,8 @@ import { DevicesListComponent } from './views/devices/devices-list/devices-list.
     PeopleService,
     HttpErrorHandlerProvider,
     JobsService,
-    DevicesService
+    DevicesService,
+    JobRegistrationService
   ],
   bootstrap: [AppComponent]
 })

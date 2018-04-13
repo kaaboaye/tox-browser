@@ -1,3 +1,73 @@
-<p *ngFor="let job of jobs">
-  {{ job.id }}
-</p>
+<table class="table">
+
+  <thead class="thead-light">
+  <tr>
+
+    <th *ngIf="client.id === 0">
+      {{ t.Client }}
+    </th>
+
+    <th>
+      {{ t.Contact }}
+    </th>
+
+    <th>
+      {{ t.DeviceType }}
+    </th>
+
+    <th>
+      {{ t.SerialNumber }}
+    </th>
+
+    <th>
+      {{ t.CreatedAt }}
+    </th>
+
+    <th>
+      {{ t.State }}
+    </th>
+
+    <th>
+
+    </th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let job of jobs">
+
+    <td *ngIf="client.id === 0">
+      {{ job.client.name }}
+    </td>
+
+    <td>
+      <a [routerLink]="" (click)="contactClicked(job)">
+        {{ job.applicant.firstName }}
+        {{ job.applicant.lastName }}
+      </a>
+    </td>
+
+    <td>
+      {{ job.device.denotement }}
+    </td>
+
+    <td>
+      <a [routerLink]="['/device', job.device.id]">{{ job.device.serialNumber }}</a>
+    </td>
+
+    <td>
+      {{ job.createdAt | date:format }}
+    </td>
+
+    <td class="JobState{{ JobState[job.state] }}">
+      {{ t[JobState[job.state]] }}
+    </td>
+
+    <td>
+      <a [routerLink]="['/job', job.id]"><i class="fa fa-caret-right"></i></a>
+    </td>
+
+  </tr>
+  </tbody>
+</table>

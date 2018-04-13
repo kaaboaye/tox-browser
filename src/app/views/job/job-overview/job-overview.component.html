@@ -1,0 +1,68 @@
+<div class="container" *ngIf="job">
+
+  <div class="row">
+
+    <div class="col">
+
+      <p>
+        {{ t.State }}:
+        <span class="JobState{{ JobState[job.state] }}">{{ t[JobState[job.state]] }}</span>
+      </p>
+
+      <p>
+        {{ t.CreatedAt }}:
+        {{ job.createdAt | date:format }}
+      </p>
+
+    </div>
+
+    <div class="col">
+      <h2>{{ t.Applicant }}</h2>
+      <app-person [person]="job.applicant"></app-person>
+    </div>
+
+    <div class="col">
+      <h2>{{ t.Dispatcher }}</h2>
+      <app-person [person]="job.dispatcher"></app-person>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <app-device [deviceId]="job.device.id"></app-device>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <h2>{{ t.Client }}</h2>
+      <app-client [client]="job.client"></app-client>
+    </div>
+
+  </div>
+
+  <div *ngIf="job.registration.id" class="row">
+
+    <div class="col">
+      <h2>{{ t.JobRegister }}</h2>
+
+      <p>
+        {{ t.JobRegisterType }}:
+        {{ t[JobRegistrationType[job.registration.type]]}}
+      </p>
+
+      <p>
+        {{ t.PlaceOfRealisation }}:
+        {{ job.registration.placeOfRealisation }}
+      </p>
+
+      <p class="pre">{{ t.Description }}: {{ job.registration.description }}</p>
+    </div>
+
+  </div>
+
+</div>

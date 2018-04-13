@@ -1,0 +1,33 @@
+<h2>{{ t.Device }}</h2>
+
+<table *ngIf="device" class="table">
+  <tbody>
+  <tr>
+    <td>{{ t.DeviceType }}</td>
+    <td>{{ device.type }}</td>
+  </tr>
+  <tr>
+    <td>{{ t.DeviceDenotement }}</td>
+    <td>{{ device.denotement }}</td>
+  </tr>
+  <tr>
+    <td>{{ t.SerialNumber }}</td>
+    <td>{{ device.serialNumber }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<mat-accordion *ngIf="deviceId === 0 && device">
+
+  <mat-expansion-panel *ngIf="device.owner" >
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ t.Owner }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-client [client]="device.owner"></app-client>
+  </mat-expansion-panel>
+
+</mat-accordion>

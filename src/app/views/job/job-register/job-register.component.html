@@ -1,0 +1,42 @@
+<div *ngIf="job" class="container">
+
+  <mat-select
+    placeholder="{{ t.JobRegisterType }}"
+    [(ngModel)]="job.registration.type">
+
+    <mat-option>
+      {{ t.JobRegisterType }}
+    </mat-option>
+
+    <mat-option
+      [value]="registerType.Warranty">
+
+      {{ t.Warranty }}
+    </mat-option>
+
+    <mat-option
+      [value]="registerType.PostWarranty">
+
+      {{ t.PostWarranty }}
+    </mat-option>
+
+  </mat-select>
+
+
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.PlaceOfRealisation }}"
+           [(ngModel)]="job.registration.placeOfRealisation">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+              placeholder="{{ t.Description }}"
+              [(ngModel)]="job.registration.description"
+              >
+    </textarea>
+  </mat-form-field>
+
+  <button mat-button (click)="add()">{{ t.Save }}</button>
+
+</div>

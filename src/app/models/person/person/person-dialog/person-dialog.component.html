@@ -1,0 +1,9 @@
+<div class="client" *ngIf="data.client">
+  <h2>{{ data.client.name }}</h2>
+  <p>
+    {{ data.client.street }} <br/>
+    {{ data.client.postalCode }}, {{ data.client.city }}
+  </p>
+</div>
+
+<app-person [person]="data"></app-person>

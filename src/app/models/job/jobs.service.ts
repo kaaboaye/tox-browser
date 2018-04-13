@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import { ApiUrl } from '../../config';
 import { Observable } from 'rxjs/Observable';
+import { Job } from './job';
 
 @Injectable()
 export class JobsService {
@@ -25,5 +26,13 @@ export class JobsService {
 
   GetJobs(clientId: number): Observable<any> {
     return this.http.get(JobsService.url(clientId), this.httpOptions);
+  }
+
+  Get(job: Job): Observable<any> {
+    return this.http.get(JobsService.url(0) + `/${ job.id }`, this.httpOptions);
+  }
+
+  Post(job: Job): Observable<any> {
+    return this.http.post(JobsService.url(job.client.id), job, this.httpOptions);
   }
 }

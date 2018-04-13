@@ -1,0 +1,24 @@
+<h1>
+  {{ t.Job }}
+
+  <span *ngIf="job">
+    {{ job.client.name }}
+  </span>
+</h1>
+
+<mat-tab-group *ngIf="job" [selectedIndex]="selectedTab">
+
+  <mat-tab label="{{ t.Overview }}">
+
+    <app-job-overview [job]="job"></app-job-overview>
+
+  </mat-tab>
+
+  <mat-tab *ngIf="job.state === JobState.Created" label="{{ t.JobRegister }}">
+
+    <app-job-register [job]="job" (submit)="jobRegister($event)"></app-job-register>
+
+  </mat-tab>
+
+</mat-tab-group>
+

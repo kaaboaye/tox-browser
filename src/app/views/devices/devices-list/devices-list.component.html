@@ -3,21 +3,25 @@
   <thead class="thead-light">
     <tr>
 
-      <td>
+      <th>
         {{ t.DeviceType }}
-      </td>
+      </th>
 
-      <td>
+      <th>
         {{ t.DeviceDenotement }}
-      </td>
+      </th>
 
-      <td>
+      <th>
         {{ t.SerialNumber }}
-      </td>
+      </th>
 
-      <td *ngIf="client.id === 0">
-        {{ t.Client }}
-      </td>
+      <th *ngIf="client.id === 0">
+        {{ t.Owner }}
+      </th>
+
+      <th>
+
+      </th>
 
     </tr>
   </thead>
@@ -40,6 +44,11 @@
       <td *ngIf="client.id === 0">
         {{ device.owner.name }}
       </td>
+
+      <td>
+        <a [routerLink]="['/device', device.id]"><i class="fa fa-caret-right"></i></a>
+      </td>
+
     </tr>
   </tbody>
 </table>

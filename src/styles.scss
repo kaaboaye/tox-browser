@@ -3,3 +3,32 @@
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~bootswatch/dist/cosmo/_bootswatch.scss";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.JobStateCreated {
+  color: black;
+}
+
+.JobStateRegistered {
+  color: red;
+}
+
+.JobStateDiagnosed {
+  color: yellow;
+}
+
+.JobStateOrdered {
+  color: purple;
+}
+
+.JobStateFinished {
+  color: green;
+}
+
+.JobStateClosed {
+  color: orange;
+}
+
+.JobStateDeleted {
+  color: black;
+}

@@ -1,13 +1,13 @@
 import { Routes as IRoutes } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
-import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-import { NotAuthGuard } from './auth/not-auth.guard';
 import { MeComponent } from './views/me/me.component';
 import { ClientsComponent } from './views/clients/clients.component';
 import { JobsComponent } from './views/jobs/jobs.component';
 import { DevicesComponent } from './views/devices/devices.component';
+import { DeviceComponent } from './views/device/device.component';
+import { JobComponent } from './views/job/job.component';
 
 export const Paths = {
   Root: '',
@@ -16,7 +16,9 @@ export const Paths = {
   Me: 'me',
   Clients: 'clients',
   Jobs: 'jobs',
-  Devices: 'devices'
+  Job: 'job',
+  Devices: 'devices',
+  Device: 'device'
 };
 
 export const Routes: IRoutes = [
@@ -26,5 +28,7 @@ export const Routes: IRoutes = [
   { path: Paths.Me, component: MeComponent },
   { path: Paths.Clients, component: ClientsComponent },
   { path: Paths.Jobs, component: JobsComponent },
-  { path: Paths.Devices, component: DevicesComponent }
+  { path: Paths.Job + '/:jobId', component: JobComponent},
+  { path: Paths.Devices, component: DevicesComponent },
+  { path: Paths.Device + '/:deviceId', component: DeviceComponent }
 ];

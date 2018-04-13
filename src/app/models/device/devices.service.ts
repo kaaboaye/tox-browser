@@ -29,6 +29,10 @@ export class DevicesService {
     return this.http.get(DevicesService.url(client), this.httpOptions);
   }
 
+  Get(id): Observable<any> {
+    return this.http.get(DevicesService.url({id: 0} as Client) + `/${id}`, this.httpOptions);
+  }
+
   Post(device: Device): Observable<any> {
     return this.http.post(DevicesService.url(device.owner), device, this.httpOptions);
   }
