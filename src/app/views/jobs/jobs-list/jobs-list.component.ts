@@ -6,7 +6,7 @@ import { Strings } from '../../../strings';
 import { Person } from '../../../models/person/person';
 import { MatDialog } from '@angular/material';
 import { PersonDialogComponent } from '../../../models/person/person/person-dialog/person-dialog.component';
-import { DateFormat } from '../../../config';
+import { TimeFormat } from '../../../config';
 import { JobState } from '../../../models/job/job-state.enum';
 
 @Component({
@@ -21,10 +21,10 @@ export class JobsListComponent implements OnInit {
     public jobsService: JobsService
   ) { }
 
-  format = DateFormat;
+  format = TimeFormat;
   t = Strings;
   JobState = JobState;
-  jobs: Job[] = [];
+  jobs: Job[] = null;
   @Input() client: Client;
 
   ngOnInit() {

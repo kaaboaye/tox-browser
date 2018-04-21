@@ -1,5 +1,7 @@
 <h2>{{ t.Device }}</h2>
 
+<app-loading *ngIf="!device"></app-loading>
+
 <table *ngIf="device" class="table">
   <tbody>
   <tr>
@@ -17,17 +19,10 @@
   </tbody>
 </table>
 
-<mat-accordion *ngIf="deviceId === 0 && device">
+<div *ngIf="device.owner">
+  <hr/>
+  <h2>{{ t.Owner }}</h2>
 
-  <mat-expansion-panel *ngIf="device.owner" >
+  <app-client [client]="device.owner"></app-client>
 
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{ t.Owner }}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-
-    <app-client [client]="device.owner"></app-client>
-  </mat-expansion-panel>
-
-</mat-accordion>
+</div>

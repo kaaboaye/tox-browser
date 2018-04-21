@@ -2,8 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Strings } from '../../../strings';
 import { Job } from '../../../models/job/job';
 import { JobState } from '../../../models/job/job-state.enum';
-import { DateFormat } from '../../../config';
+import { DateFormat, TimeFormat } from '../../../config';
 import { JobRegistrationType } from '../../../models/job-registration/job-registration';
+import { JobRepairType } from '../../../models/job-diagnosis/job-repair-type.enum';
 
 @Component({
   selector: 'app-job-overview',
@@ -18,7 +19,9 @@ export class JobOverviewComponent implements OnInit {
   @Input() job: Job;
   JobState = JobState;
   JobRegistrationType = JobRegistrationType;
-  format = DateFormat;
+  JobRepairType = JobRepairType;
+  timeFormat = TimeFormat;
+  dateFormat = DateFormat;
 
   ngOnInit() {
   }

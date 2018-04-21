@@ -8,6 +8,7 @@ import { ClientService } from '../../../models/client/client.service';
 import { Strings } from '../../../strings';
 import { PeopleService } from '../../../models/person/people.service';
 import { Person } from '../../../models/person/person';
+import { JobRegistrationType } from '../../../models/job-registration/job-registration';
 
 @Component({
   selector: 'app-job-new',
@@ -25,6 +26,7 @@ export class JobNewComponent implements OnInit {
   ) { }
 
   t = Strings;
+  registerType = JobRegistrationType;
   job: Job = this.data;
   clients: Client[];
   devices: Device[];

@@ -1,0 +1,29 @@
+<div *ngIf="job" class="container">
+
+  <mat-form-field>
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+              placeholder="{{ t.NumberSAP }}"
+              [(ngModel)]="job.order.numberSAP"
+    >
+    </textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+              placeholder="{{ t.PurchaseOrder }}"
+              [(ngModel)]="job.order.purchaseOrder"
+    >
+    </textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+              placeholder="{{ t.ClientsOrder }}"
+              [(ngModel)]="job.order.clientsOrder"
+    >
+    </textarea>
+  </mat-form-field>
+
+  <button mat-button (click)="add()">{{ t.Save }}</button>
+
+</div>

@@ -20,6 +20,7 @@ export const Strings = {
   Street: 'Ulica',
   PostalCode: 'Kod pocztowy',
   City: 'Miasto',
+  Address: 'Adres',
   List: 'Lista',
   Add: 'Dodaj',
   Done: 'Zrobione',
@@ -60,9 +61,52 @@ export const Strings = {
   Dispatcher: 'Przyjmujący',
   Overview: 'Przegląd',
   JobRegister: 'Rejestrowanie zgłoszenia',
+  JobDiagnose: 'Diagnoza',
   JobRegisterType: 'Rodzaj zgłoszenia',
   PostWarranty: 'Pogwarancyjny',
   Warranty: 'Gwarancyjny',
   PlaceOfRealisation: 'Miejsce realizacji',
-  Description: 'Opis'
+  Description: 'Opis',
+
+  hydraulicNominalDimension: 'Tłoczysko cz. hydrauliczna wymiar nominalny',
+  th01: 'th01',
+  th02: 'th02',
+  th03: 'th03',
+  th91: 'th91',
+  th92: 'th92',
+  th93: 'th93',
+
+  pneumaticNominalDimension: 'Tłoczysko cz. pneumatyczna wymiar nominalny',
+  tp01: 'tp01',
+  tp02: 'tp02',
+  tp03: 'tp03',
+  tp91: 'tp91',
+  tp92: 'tp92',
+  tp93: 'tp93',
+
+  plungerNominalDimension: 'Nurnik wymiar nominalny',
+  n01: 'n01',
+  n02: 'n02',
+  n03: 'n03',
+  n91: 'n91',
+  n92: 'n92',
+  n93: 'n93',
+
+  PartsToReplace: 'Części do wymiany',
+  EstimatedRepairTime: 'Szacowany czas naprawy',
+  ExpertiseDate: 'Data expertyzy',
+
+  RepairType: 'Typ naprawy',
+  Free: 'Darmowa',
+  Paid: 'Płatna',
+
+  Order: 'Zamówienie',
+  NumberSAP: 'Numer SAP',
+  PurchaseOrder: 'Numer zamówienia sprzedarzowego',
+  ClientsOrder: 'Identyfikator zamówienia klienta',
+
+  Completion: 'Zakończenie',
+  CompletionDate: 'Data zakończenia',
+  RepairTime: 'Czas naprawy',
+  Annotations: 'Uwagi końcowe'
 };

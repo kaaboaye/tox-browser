@@ -25,6 +25,10 @@ export class ClientService {
     return this.http.get(this.url, this.httpOptions);
   }
 
+  Get(id: number): Observable<any> {
+    return this.http.get(this.url + `/${ id }`, this.httpOptions);
+  }
+
   Post(payload: Client): Observable<any> {
     return this.http.post(this.url, payload, this.httpOptions);
   }

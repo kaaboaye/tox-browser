@@ -1,8 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { Strings } from '../../../../strings';
+import { Strings } from '../../../strings';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Person } from '../../../../models/person/person';
-import { Client } from '../../../../models/client/client';
+import { Person } from '../../../models/person/person';
+import { Client } from '../../../models/client/client';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({

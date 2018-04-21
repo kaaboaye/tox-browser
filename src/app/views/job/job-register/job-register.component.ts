@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Job } from '../../../models/job/job';
 import { Strings } from '../../../strings';
 import { JobRegistration, JobRegistrationType } from '../../../models/job-registration/job-registration';
+import { Person } from '../../../models/person/person';
+import { PeopleService } from '../../../models/person/people.service';
 
 @Component({
   selector: 'app-job-register',

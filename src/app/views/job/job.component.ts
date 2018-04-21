@@ -4,8 +4,11 @@ import { JobsService } from '../../models/job/jobs.service';
 import { Strings } from '../../strings';
 import { Job } from '../../models/job/job';
 import { JobState } from '../../models/job/job-state.enum';
-import { DateFormat } from '../../config';
+import { TimeFormat } from '../../config';
 import { JobRegistrationService } from '../../models/job-registration/job-registration.service';
+import { JobDiagnosisService } from '../../models/job-diagnosis/job-diagnosis.service';
+import { JobOrdersService } from '../../models/job-order/job-orders.service';
+import { JobCompletionService } from '../../models/job-completion/job-completion.service';
 
 @Component({
   selector: 'app-job',
@@ -17,7 +20,10 @@ export class JobComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public jobsService: JobsService,
-    public jobRegistrationService: JobRegistrationService
+    public jobRegistrationService: JobRegistrationService,
+    public jobDiagnoseService: JobDiagnosisService,
+    public jobOrderService: JobOrdersService,
+    public jobCompletionService: JobCompletionService
   ) { }
 
   t = Strings;
@@ -25,26 +31,42 @@ export class JobComponent implements OnInit {
   job: Job;
   JobState = JobState;
   selectedTab: number;
+  loading = true;
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.jobId = params.jobId);
+    this.route.params.subscribe(params => {
+      this.jobId = params.jobId;
 
-    this.Pull();
+      this.Pull();
+    });
   }
 
   Pull() {
+    this.loading = true;
+
     this.jobsService.Get({id: this.jobId} as Job).subscribe(job => {
       this.job = job;
-
-      // Disabled because bug with expandable panels :/
-      // if (this.job.state === JobState.Created) {
-      //   this.selectedTab = 1; // JobRegister tab
-      // }
+      this.loading = false;
     });
   }
 
   jobRegister() {
     this.jobRegistrationService.Post(this.job)
+      .subscribe(job => this.job = job);
+  }
+
+  jobDiagnose() {
+    this.jobDiagnoseService.Post(this.job)
+      .subscribe(job => this.job = job);
+  }
+
+  jobOrder() {
+    this.jobOrderService.Post(this.job)
+      .subscribe(job => this.job = job);
+  }
+
+  jobCompletion() {
+    this.jobCompletionService.Post(this.job)
       .subscribe(job => this.job = job);
   }
 

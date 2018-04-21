@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Person } from '../../../../models/person/person';
-import { PeopleService } from '../../../../models/person/people.service';
-import { ClientPersonNewComponent } from '../client-person-new/client-person-new.component';
+import { Person } from '../../../models/person/person';
+import { PeopleService } from '../../../models/person/people.service';
 import { StaffListPatchComponent } from './staff-list-patch/staff-list-patch.component';
 import { MatDialog } from '@angular/material';
-import { Strings } from '../../../../strings';
+import { Strings } from '../../../strings';
 
 @Component({
   selector: 'app-staff-list',
@@ -20,7 +19,7 @@ export class StaffListComponent implements OnInit {
 
   t = Strings;
   @Input() clientId: number;
-  staff: Person[];
+  staff: Person[] = null;
 
   ngOnInit() {
   }

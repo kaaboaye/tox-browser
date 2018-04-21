@@ -8,15 +8,13 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AuthService } from './auth/auth.service';
 import { Routes } from './routes';
-import { AuthGuard } from './auth/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NotAuthGuard } from './auth/not-auth.guard';
 import { MeComponent } from './views/me/me.component';
 import { UserService } from './models/user/user.service';
 import { UserComponent } from './models/user/user.component';
 import { ClientsComponent } from './views/clients/clients.component';
-import { ClientComponent } from './views/clients/client/client.component';
+import { ClientComponent } from './views/client/client.component';
 import { ClientService } from './models/client/client.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -24,11 +22,11 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { ClientsListComponent } from './views/clients/clients-list/clients-list.component';
-import { StaffListComponent } from './views/clients/client/staff-list/staff-list.component';
+import { StaffListComponent } from './views/client/staff-list/staff-list.component';
 import { PeopleService } from './models/person/people.service';
 import { PersonComponent } from './models/person/person/person.component';
-import { ClientPersonNewComponent } from './views/clients/client/client-person-new/client-person-new.component';
-import { StaffListPatchComponent } from './views/clients/client/staff-list/staff-list-patch/staff-list-patch.component';
+import { ClientPersonNewComponent } from './views/client/client-person-new/client-person-new.component';
+import { StaffListPatchComponent } from './views/client/staff-list/staff-list-patch/staff-list-patch.component';
 import { HttpErrorHandlerProvider } from './http-error-handler';
 import { ClientNewComponent } from './views/clients/client-new/client-new.component';
 import { JobsComponent } from './views/jobs/jobs.component';
@@ -45,6 +43,13 @@ import { JobComponent } from './views/job/job.component';
 import { JobOverviewComponent } from './views/job/job-overview/job-overview.component';
 import { JobRegisterComponent } from './views/job/job-register/job-register.component';
 import { JobRegistrationService } from './models/job-registration/job-registration.service';
+import { JobDiagnosisComponent } from './views/job/job-diagnosis/job-diagnosis.component';
+import { JobDiagnosisService } from './models/job-diagnosis/job-diagnosis.service';
+import { LoadingComponent } from './ui/loading/loading.component';
+import { JobOrderComponent } from './views/job/job-order/job-order.component';
+import { JobOrdersService } from './models/job-order/job-orders.service';
+import { JobCompletionComponent } from './views/job/job-completion/job-completion.component';
+import { JobCompletionService } from './models/job-completion/job-completion.service';
 
 
 @NgModule({
@@ -74,7 +79,11 @@ import { JobRegistrationService } from './models/job-registration/job-registrati
     PersonDialogComponent,
     JobComponent,
     JobOverviewComponent,
-    JobRegisterComponent
+    JobRegisterComponent,
+    JobDiagnosisComponent,
+    LoadingComponent,
+    JobOrderComponent,
+    JobCompletionComponent
   ],
   entryComponents: [
     ClientPersonNewComponent,
@@ -108,7 +117,10 @@ import { JobRegistrationService } from './models/job-registration/job-registrati
     HttpErrorHandlerProvider,
     JobsService,
     DevicesService,
-    JobRegistrationService
+    JobRegistrationService,
+    JobDiagnosisService,
+    JobOrdersService,
+    JobCompletionService
   ],
   bootstrap: [AppComponent]
 })

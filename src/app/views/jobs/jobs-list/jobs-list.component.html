@@ -1,3 +1,4 @@
+
 <table class="table">
 
   <thead class="thead-light">
@@ -38,7 +39,7 @@
   <tr *ngFor="let job of jobs">
 
     <td *ngIf="client.id === 0">
-      {{ job.client.name }}
+      <a [routerLink]="['/client', job.client.id]">{{ job.client.name }}</a>
     </td>
 
     <td>
@@ -57,7 +58,7 @@
     </td>
 
     <td>
-      {{ job.createdAt | date:format }}
+      <a [routerLink]="['/job', job.id]">{{ job.createdAt | date:format }}</a>
     </td>
 
     <td class="JobState{{ JobState[job.state] }}">
@@ -71,3 +72,5 @@
   </tr>
   </tbody>
 </table>
+
+<app-loading *ngIf="jobs === null"></app-loading>

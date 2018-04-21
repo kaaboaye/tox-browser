@@ -1,3 +1,5 @@
+<app-loading *ngIf="!client"></app-loading>
+
 <div *ngIf="client">
   <h2>{{ client.name }}</h2>
   <p>

@@ -1,3 +1,4 @@
+
 <table class="table">
   <tbody>
     <tr *ngFor="let person of staff">
@@ -17,3 +18,5 @@
     </tr>
   </tbody>
 </table>
+
+<app-loading *ngIf="staff === null"></app-loading>

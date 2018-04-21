@@ -1,8 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { Client } from '../../../../../models/client/client';
+import { Client } from '../../../../models/client/client';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Strings } from '../../../../../strings';
-import { Person } from '../../../../../models/person/person';
+import { Strings } from '../../../../strings';
+import { Person } from '../../../../models/person/person';
 
 @Component({
   selector: 'app-staff-list-patch',

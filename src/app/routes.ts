@@ -8,6 +8,7 @@ import { JobsComponent } from './views/jobs/jobs.component';
 import { DevicesComponent } from './views/devices/devices.component';
 import { DeviceComponent } from './views/device/device.component';
 import { JobComponent } from './views/job/job.component';
+import { ClientComponent } from './views/client/client.component';
 
 export const Paths = {
   Root: '',
@@ -15,6 +16,7 @@ export const Paths = {
   Register: 'register',
   Me: 'me',
   Clients: 'clients',
+  Client: 'client',
   Jobs: 'jobs',
   Job: 'job',
   Devices: 'devices',
@@ -27,6 +29,7 @@ export const Routes: IRoutes = [
   { path: Paths.Register, component: RegisterComponent },
   { path: Paths.Me, component: MeComponent },
   { path: Paths.Clients, component: ClientsComponent },
+  { path: Paths.Client + '/:clientId', component: ClientComponent },
   { path: Paths.Jobs, component: JobsComponent },
   { path: Paths.Job + '/:jobId', component: JobComponent},
   { path: Paths.Devices, component: DevicesComponent },

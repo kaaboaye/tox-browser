@@ -1,18 +1,43 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let client of clients">
-    <mat-expansion-panel-header>
+<table class="table">
 
-      <mat-panel-title>
-        {{ client.name }}
-      </mat-panel-title>
+  <thead class="thead-light">
+  <tr>
 
-      <!--<mat-panel-description>-->
-        <!--{{ client.street }},-->
-        <!--{{ client.city }}-->
-      <!--</mat-panel-description>-->
+    <th>
+      {{ t.Name }}
+    </th>
 
-    </mat-expansion-panel-header>
+    <th>
+      {{ t.Address }}
+    </th>
 
-    <app-client [client]="client"></app-client>
-  </mat-expansion-panel>
-</mat-accordion>
+    <th>
+
+    </th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let client of clients">
+
+    <td>
+      <a [routerLink]="['/client', client.id]">{{ client.name }}</a>
+    </td>
+
+    <td>
+      {{ client.street }}
+      {{ client.city }}
+    </td>
+
+    <td>
+      <a [routerLink]="['/client', client.id]"><i class="fa fa-caret-right"></i></a>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+
+<app-loading *ngIf="clients === null"></app-loading>
+
+

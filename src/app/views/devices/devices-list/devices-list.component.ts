@@ -16,7 +16,7 @@ export class DevicesListComponent implements OnInit {
   ) { }
 
   @Input() client: Client;
-  devices: Device[];
+  devices: Device[] = null;
   t = Strings;
 
   ngOnInit() {

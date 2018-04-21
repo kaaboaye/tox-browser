@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material';
 import { JobNewComponent } from './job-new/job-new.component';
 import { JobsService } from '../../models/job/jobs.service';
 import { Router } from '@angular/router';
+import { JobRegistration } from '../../models/job-registration/job-registration';
+import { JobRegistrationService } from '../../models/job-registration/job-registration.service';
 
 @Component({
   selector: 'app-jobs',
@@ -18,6 +20,7 @@ export class JobsComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public jobsService: JobsService,
+    public jobsRegistrationService: JobRegistrationService,
     public router: Router
   ) { }
 
@@ -41,15 +44,26 @@ export class JobsComponent implements OnInit {
   addJob() {
     const job = new Job();
     job.client = this.client;
+    job.registration = new JobRegistration();
 
     const dialog = this.dialog.open(JobNewComponent, {
       data: job
     });
 
     dialog.afterClosed().subscribe(response => {
-      this.jobsService.Post(job).subscribe(newJob => {
+      const registration = new JobRegistration();
+      registration.description = job.registration.description;
+      registration.type = job.registration.type;
+      registration.placeOfRealisation = job.registration.placeOfRealisation;
+
+      this.jobsService.Post(job).subscribe((newJob: Job) => {
         this.jobsList.jobs.push(newJob);
-        this.router.navigate(['/job', newJob.id]);
+
+        newJob.registration = registration;
+        this.jobsRegistrationService.Post(newJob)
+          .subscribe(_ => {
+            this.router.navigate(['/job', newJob.id]);
+          });
       });
     });
   }

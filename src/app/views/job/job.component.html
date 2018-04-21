@@ -6,7 +6,9 @@
   </span>
 </h1>
 
-<mat-tab-group *ngIf="job" [selectedIndex]="selectedTab">
+<app-loading *ngIf="loading"></app-loading>
+
+<mat-tab-group *ngIf="job && !loading" [selectedIndex]="selectedTab">
 
   <mat-tab label="{{ t.Overview }}">
 
@@ -17,6 +19,24 @@
   <mat-tab *ngIf="job.state === JobState.Created" label="{{ t.JobRegister }}">
 
     <app-job-register [job]="job" (submit)="jobRegister($event)"></app-job-register>
+
+  </mat-tab>
+
+  <mat-tab *ngIf="job.state === JobState.Registered" label="{{ t.JobDiagnose }}">
+
+    <app-job-diagnosis [job]="job" (submit)="jobDiagnose($event)"></app-job-diagnosis>
+
+  </mat-tab>
+
+  <mat-tab *ngIf="job.state === JobState.Diagnosed" label="{{ t.Order }}">
+
+    <app-job-order [job]="job" (submit)="jobOrder($event)"></app-job-order>
+
+  </mat-tab>
+
+  <mat-tab *ngIf="job.state === JobState.Ordered" label="{{ t.Completion }}">
+
+    <app-job-completion [job]="job" (submit)="jobCompletion($event)"></app-job-completion>
 
   </mat-tab>
 

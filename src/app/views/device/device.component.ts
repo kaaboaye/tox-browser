@@ -17,20 +17,18 @@ export class DeviceComponent implements OnInit {
     public devicesService: DevicesService
   ) { }
 
-  @Input() deviceId = 0;
-  device: Device;
+  @Input() device: Device;
   t = Strings;
 
   ngOnInit() {
-    if (this.deviceId !== 0) {
-      this.devicesService.Get(this.deviceId).subscribe(device => this.device = device);
-    } else {
-      this.route.params.subscribe(params => {
-        const { deviceId } = params;
+    this.route.params.subscribe(params => {
+      const { deviceId } = params;
 
-        this.devicesService.Get(deviceId).subscribe(device => this.device = device);
-      });
-    }
+      if (deviceId) {
+        this.devicesService.Get(deviceId)
+          .subscribe(device => this.device = device);
+      }
+
+    });
   }
-
 }

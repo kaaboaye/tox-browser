@@ -38,11 +38,11 @@
       </td>
 
       <td>
-        {{ device.serialNumber }}
+        <a [routerLink]="['/device', device.id]">{{ device.serialNumber }}</a>
       </td>
 
       <td *ngIf="client.id === 0">
-        {{ device.owner.name }}
+        <a [routerLink]="['/client', device.owner.id]">{{ device.owner.name }}</a>
       </td>
 
       <td>
@@ -52,3 +52,6 @@
     </tr>
   </tbody>
 </table>
+
+<app-loading *ngIf="devices === null"></app-loading>
+

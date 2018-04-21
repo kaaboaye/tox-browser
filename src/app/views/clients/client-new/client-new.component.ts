@@ -1,7 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Strings } from '../../../strings';
 import { Person } from '../../../models/person/person';
-import { ClientPersonNewComponent } from '../client/client-person-new/client-person-new.component';
 import { Client } from '../../../models/client/client';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
