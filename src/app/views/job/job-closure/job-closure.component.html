@@ -1,0 +1,21 @@
+<div *ngIf="job" class="container">
+
+  <mat-form-field>
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+              placeholder="{{ t.Annotations }}"
+              [(ngModel)]="job.closure.annotations"
+    >
+    </textarea>
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput
+           type="date"
+           placeholder="{{ t.Closed }}"
+           [(ngModel)]="job.closure.dateOfDispatch">
+  </mat-form-field>
+
+  <button mat-button (click)="add()">{{ t.Save }}</button>
+
+</div>

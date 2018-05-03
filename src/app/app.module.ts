@@ -50,6 +50,8 @@ import { JobOrderComponent } from './views/job/job-order/job-order.component';
 import { JobOrdersService } from './models/job-order/job-orders.service';
 import { JobCompletionComponent } from './views/job/job-completion/job-completion.component';
 import { JobCompletionService } from './models/job-completion/job-completion.service';
+import { JobClosureComponent } from './views/job/job-closure/job-closure.component';
+import { JobClosureService } from './models/job-closure/job-closure.service';
 
 
 @NgModule({
@@ -83,7 +85,8 @@ import { JobCompletionService } from './models/job-completion/job-completion.ser
     JobDiagnosisComponent,
     LoadingComponent,
     JobOrderComponent,
-    JobCompletionComponent
+    JobCompletionComponent,
+    JobClosureComponent
   ],
   entryComponents: [
     ClientPersonNewComponent,
@@ -120,7 +123,8 @@ import { JobCompletionService } from './models/job-completion/job-completion.ser
     JobRegistrationService,
     JobDiagnosisService,
     JobOrdersService,
-    JobCompletionService
+    JobCompletionService,
+    JobClosureService
   ],
   bootstrap: [AppComponent]
 })

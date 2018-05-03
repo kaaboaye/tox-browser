@@ -48,7 +48,7 @@
   <div *ngIf="job.registration && job.registration.id" class="row part">
 
     <div class="col">
-      <h2 class="JobStateRegistered">{{ t.JobRegister }}</h2>
+      <h2 class="JobStateRegistered">{{ t.Registration }}</h2>
 
       <p>
         {{ t.JobRegisterType }}:
@@ -74,7 +74,7 @@
       <p class="pre">{{ job.diagnosis.diagnosis }}</p>
 
       <p class="pre">{{ t.PartsToReplace }}:
-        {{ job.diagnosis.diagnosis }}</p>
+        {{ job.diagnosis.partsToReplace }}</p>
 
       <div class="row">
 
@@ -159,7 +159,7 @@
   <div *ngIf="job.completion && job.completion.id" class="row part">
 
     <div class="col">
-      <h2 class="JobStateFinished">{{ t.Order }}</h2>
+      <h2 class="JobStateFinished">{{ t.Completion }}</h2>
 
       <p class="pre">{{ t.Description }}: {{ job.completion.description }}</p>
       <p class="pre">{{ t.Annotations }}: {{ job.completion.annotations }}</p>
@@ -185,6 +185,20 @@
 
       </div>
 
+
+    </div>
+
+  </div>
+
+  <div *ngIf="job.closure && job.closure.id" class="row part">
+
+    <div class="col">
+      <h2 class="JobStateClosed">{{ t.Closed }}</h2>
+
+      <p class="pre">{{ t.Annotations }}: {{ job.closure.annotations }}</p>
+
+      <p>{{ t.Closed }}:
+        {{ job.closure.dateOfClosure | date:timeFormat }}</p>
 
     </div>
 

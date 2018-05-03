@@ -6,6 +6,7 @@ import { JobState } from './job-state.enum';
 import { JobDiagnosis } from '../job-diagnosis/job-diagnosis';
 import { JobOrder } from '../job-order/job-order';
 import { JobCompletion } from '../job-completion/job-completion';
+import { JobClosure } from '../job-closure/job-closure';
 
 export class Job {
 
@@ -19,6 +20,7 @@ export class Job {
   diagnosis: JobDiagnosis;
   order: JobOrder;
   completion: JobCompletion;
+  closure: JobClosure;
   createdAt: Date;
 
 }

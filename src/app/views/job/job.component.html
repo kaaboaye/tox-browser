@@ -40,5 +40,11 @@
 
   </mat-tab>
 
+  <mat-tab *ngIf="job.state === JobState.Finished" label="{{ t.Completion }}">
+
+    <app-job-closure [job]="job" (submit)="jobClosure($event)"></app-job-closure>
+
+  </mat-tab>
+
 </mat-tab-group>
 

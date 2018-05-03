@@ -9,6 +9,7 @@ import { JobRegistrationService } from '../../models/job-registration/job-regist
 import { JobDiagnosisService } from '../../models/job-diagnosis/job-diagnosis.service';
 import { JobOrdersService } from '../../models/job-order/job-orders.service';
 import { JobCompletionService } from '../../models/job-completion/job-completion.service';
+import { JobClosureService } from '../../models/job-closure/job-closure.service';
 
 @Component({
   selector: 'app-job',
@@ -23,7 +24,8 @@ export class JobComponent implements OnInit {
     public jobRegistrationService: JobRegistrationService,
     public jobDiagnoseService: JobDiagnosisService,
     public jobOrderService: JobOrdersService,
-    public jobCompletionService: JobCompletionService
+    public jobCompletionService: JobCompletionService,
+    public jobClosureService: JobClosureService
   ) { }
 
   t = Strings;
@@ -67,6 +69,11 @@ export class JobComponent implements OnInit {
 
   jobCompletion() {
     this.jobCompletionService.Post(this.job)
+      .subscribe(job => this.job = job);
+  }
+
+  jobClosure() {
+    this.jobClosureService.Post(this.job)
       .subscribe(job => this.job = job);
   }
 

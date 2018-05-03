@@ -108,5 +108,6 @@ export const Strings = {
   Completion: 'Zakończenie',
   CompletionDate: 'Data zakończenia',
   RepairTime: 'Czas naprawy',
-  Annotations: 'Uwagi końcowe'
+  Annotations: 'Uwagi końcowe',
+  Registration: 'Rejestracja'
 };
