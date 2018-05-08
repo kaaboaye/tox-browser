@@ -52,6 +52,9 @@ import { JobCompletionComponent } from './views/job/job-completion/job-completio
 import { JobCompletionService } from './models/job-completion/job-completion.service';
 import { JobClosureComponent } from './views/job/job-closure/job-closure.component';
 import { JobClosureService } from './models/job-closure/job-closure.service';
+import { JobOverviewRegistrationComponent } from './views/job/job-overview/job-overview-registration/job-overview-registration.component';
+import { StaffComponent } from './views/staff/staff.component';
+import { UserChangePasswordComponent } from './models/user/user-change-password/user-change-password.component';
 
 
 @NgModule({
@@ -86,7 +89,10 @@ import { JobClosureService } from './models/job-closure/job-closure.service';
     LoadingComponent,
     JobOrderComponent,
     JobCompletionComponent,
-    JobClosureComponent
+    JobClosureComponent,
+    JobOverviewRegistrationComponent,
+    StaffComponent,
+    UserChangePasswordComponent
   ],
   entryComponents: [
     ClientPersonNewComponent,
@@ -94,7 +100,8 @@ import { JobClosureService } from './models/job-closure/job-closure.service';
     ClientNewComponent,
     JobNewComponent,
     DeviceNewComponent,
-    PersonDialogComponent
+    PersonDialogComponent,
+    UserChangePasswordComponent
   ],
   imports: [
     BrowserModule,

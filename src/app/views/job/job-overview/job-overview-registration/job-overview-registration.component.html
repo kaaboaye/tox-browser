@@ -1,0 +1,19 @@
+<div *ngIf="job && job.registration && job.registration.id">
+  <h2 class="JobStateRegistered">{{ t.Registration }}</h2>
+
+  <p class="vc">
+    <i *ngIf="job.registration.prev" class="fa fa-chevron-circle-left"></i>
+  </p>
+
+  <p>
+    {{ t.JobRegisterType }}:
+    {{ t[JobRegistrationType[job.registration.type]]}}
+  </p>
+
+  <p>
+    {{ t.PlaceOfRealisation }}:
+    {{ job.registration.placeOfRealisation }}
+  </p>
+
+  <p class="pre">{{ t.Description }}: {{ job.registration.description }}</p>
+</div>

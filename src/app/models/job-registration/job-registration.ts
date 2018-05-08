@@ -7,6 +7,7 @@ export enum JobRegistrationType {
 export class JobRegistration {
 
   id: number;
+  prev: JobRegistration;
   createdAt: Date;
   type: JobRegistrationType;
   placeOfRealisation: string;

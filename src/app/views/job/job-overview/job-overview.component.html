@@ -46,23 +46,7 @@
   </div>
 
   <div *ngIf="job.registration && job.registration.id" class="row part">
-
-    <div class="col">
-      <h2 class="JobStateRegistered">{{ t.Registration }}</h2>
-
-      <p>
-        {{ t.JobRegisterType }}:
-        {{ t[JobRegistrationType[job.registration.type]]}}
-      </p>
-
-      <p>
-        {{ t.PlaceOfRealisation }}:
-        {{ job.registration.placeOfRealisation }}
-      </p>
-
-      <p class="pre">{{ t.Description }}: {{ job.registration.description }}</p>
-    </div>
-
+    <app-job-overview-registration class="col" [job]="job"></app-job-overview-registration>
   </div>
 
   <div *ngIf="job.diagnosis && job.diagnosis.id" class="row part">
