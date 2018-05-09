@@ -1,4 +1,4 @@
-import { User } from '../user';
+import { User } from '../../../models/user/user';
 
 export class UserChangePassword {
   constructor(user: User) {

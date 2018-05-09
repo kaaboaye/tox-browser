@@ -35,21 +35,6 @@ export class AuthService {
     this.Authenticated = this.ping();
   }
 
-  public Register(reqUser: User): User {
-    let user: User;
-
-    (this.http.post(this.url, reqUser, httpOptions) as Observable<User>)
-      .subscribe(res => {
-        user = res;
-      });
-
-    if (user.error) {
-      throw user.error;
-    }
-
-    return user;
-  }
-
   public Login(form: LoginForm): void {
     (this.http.post(this.url + '/login', form, httpOptions) as Observable<Session>)
       .subscribe((session: Session) => {

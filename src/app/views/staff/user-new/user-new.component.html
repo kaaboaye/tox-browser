@@ -1,0 +1,39 @@
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.FirstName }}"
+         [(ngModel)]="user.identity.firstName">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.LastName }}"
+         [(ngModel)]="user.identity.lastName">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.Email }}"
+         [(ngModel)]="user.identity.email">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.PhoneNumber }}"
+         [(ngModel)]="user.identity.phoneNumber">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.Username }}"
+         [(ngModel)]="user.username">
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput
+         placeholder="{{ t.City }}"
+         [(ngModel)]="client.city">
+</mat-form-field>
+
+<button mat-button (click)="add()">{{ t.Add }}</button>
+
+

@@ -10,6 +10,7 @@ import { DeviceComponent } from './views/device/device.component';
 import { JobComponent } from './views/job/job.component';
 import { ClientComponent } from './views/client/client.component';
 import { StaffComponent } from './views/staff/staff.component';
+import { UserComponent } from './views/user/user.component';
 
 export const Paths = {
   Root: '',
@@ -22,7 +23,8 @@ export const Paths = {
   Job: 'job',
   Devices: 'devices',
   Device: 'device',
-  Staff: 'staff'
+  Staff: 'staff',
+  User: 'user'
 };
 
 export const Routes: IRoutes = [
@@ -36,5 +38,6 @@ export const Routes: IRoutes = [
   { path: Paths.Job + '/:jobId', component: JobComponent},
   { path: Paths.Devices, component: DevicesComponent },
   { path: Paths.Device + '/:deviceId', component: DeviceComponent },
-  { path: Paths.Staff, component: StaffComponent }
+  { path: Paths.Staff, component: StaffComponent },
+  { path: Paths.User + '/:userId', component: UserComponent }
 ];

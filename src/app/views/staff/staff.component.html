@@ -1,3 +1,9 @@
+<h1>{{ t.Staff }}</h1>
+
+<mat-chip-list>
+  <mat-chip color="primary" selected="true" (click)="addUser()">{{ t.Add }}</mat-chip>
+</mat-chip-list>
+
 <table class="table">
 
   <thead class="thead-light">
@@ -23,7 +29,26 @@
   </thead>
 
   <tbody>
+    <tr *ngFor="let user of staff">
 
+      <td>
+        {{ user.username }}
+      </td>
+
+      <td>
+        {{ user.identity.firstName }}
+        {{ user.identity.lastName }}
+      </td>
+
+      <td>
+        {{ t[Rank[ user.rank ]] }}
+      </td>
+
+      <td>
+        <a [routerLink]="['/user', user.id]"><i class="fa fa-caret-right"></i></a>
+      </td>
+
+    </tr>
   </tbody>
 </table>
 

@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import { ApiUrl } from '../../config';
 import { Observable } from 'rxjs/Observable';
+import { UserChangePassword } from '../../views/user/user-change-password/user-change-password';
 import { User } from './user';
-import { UserChangePassword } from './user-change-password/user-change-password';
 
 @Injectable()
 export class UserService {
@@ -22,7 +22,11 @@ export class UserService {
     })
   };
 
-  Get(): Observable<any> {
+  Get(userId: number): Observable<any> {
+    return this.http.get(this.url + `/${userId}`, this.httpOptions);
+  }
+
+  GetAll(): Observable<any> {
     return this.http.get(this.url, this.httpOptions);
   }
 
@@ -32,5 +36,9 @@ export class UserService {
 
   ChangePassword(form: UserChangePassword): Observable<any> {
     return this.http.post(this.url + '/change-password', form, this.httpOptions);
+  }
+
+  Register(user: User): Observable<any> {
+    return this.http.post(this.url, user, this.httpOptions);
   }
 }

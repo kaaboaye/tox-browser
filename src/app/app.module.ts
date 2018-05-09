@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MeComponent } from './views/me/me.component';
 import { UserService } from './models/user/user.service';
-import { UserComponent } from './models/user/user.component';
+import { UserComponent } from './views/user/user.component';
 import { ClientsComponent } from './views/clients/clients.component';
 import { ClientComponent } from './views/client/client.component';
 import { ClientService } from './models/client/client.service';
@@ -54,7 +54,8 @@ import { JobClosureComponent } from './views/job/job-closure/job-closure.compone
 import { JobClosureService } from './models/job-closure/job-closure.service';
 import { JobOverviewRegistrationComponent } from './views/job/job-overview/job-overview-registration/job-overview-registration.component';
 import { StaffComponent } from './views/staff/staff.component';
-import { UserChangePasswordComponent } from './models/user/user-change-password/user-change-password.component';
+import { UserChangePasswordComponent } from './views/user/user-change-password/user-change-password.component';
+import { UserNewComponent } from './views/staff/user-new/user-new.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { UserChangePasswordComponent } from './models/user/user-change-password/
     JobClosureComponent,
     JobOverviewRegistrationComponent,
     StaffComponent,
-    UserChangePasswordComponent
+    UserChangePasswordComponent,
+    UserNewComponent
   ],
   entryComponents: [
     ClientPersonNewComponent,
@@ -101,7 +103,8 @@ import { UserChangePasswordComponent } from './models/user/user-change-password/
     JobNewComponent,
     DeviceNewComponent,
     PersonDialogComponent,
-    UserChangePasswordComponent
+    UserChangePasswordComponent,
+    UserNewComponent
   ],
   imports: [
     BrowserModule,
