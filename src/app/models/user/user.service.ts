@@ -22,6 +22,10 @@ export class UserService {
     })
   };
 
+  Get(): Observable<any> {
+    return this.http.get(this.url, this.httpOptions);
+  }
+
   GetMe(): Observable<any> {
     return this.http.get(this.url + '/me', this.httpOptions);
   }

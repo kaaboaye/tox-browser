@@ -1,3 +1,32 @@
-<p>
-  staff works!
-</p>
+<table class="table">
+
+  <thead class="thead-light">
+  <tr>
+
+    <th>
+      {{ t.Username }}
+    </th>
+
+    <th>
+      {{ t.FullName }}
+    </th>
+
+    <th>
+      {{ t.Rank }}
+    </th>
+
+    <th>
+
+    </th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+</table>
+
+<app-loading *ngIf="staff === null"></app-loading>
+
+

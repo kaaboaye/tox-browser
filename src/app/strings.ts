@@ -113,5 +113,8 @@ export const Strings = {
   CompletionDate: 'Data zakończenia',
   RepairTime: 'Czas naprawy',
   Annotations: 'Uwagi końcowe',
-  Registration: 'Rejestracja'
+  Registration: 'Rejestracja',
+  NoSuchUser: 'Podany użytkownik nie istnieje',
+  BadPassword: 'Złe hasło',
+  PasswordsNotEqual: 'Hasła nie są identyczne'
 };

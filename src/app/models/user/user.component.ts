@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User, UserRank } from './user';
 import { Strings } from '../../strings';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { UserChangePasswordComponent } from './user-change-password/user-change-password.component';
 import { UserService } from './user.service';
 import { UserChangePassword } from './user-change-password/user-change-password';
@@ -15,7 +15,8 @@ export class UserComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public usersService: UserService
+    public usersService: UserService,
+  private snackBar: MatSnackBar
   ) { }
 
   t = Strings;
@@ -31,7 +32,16 @@ export class UserComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe((form: UserChangePassword) => {
+      if (!form) {
+        return;
+      }
+
       this.usersService.ChangePassword(form).subscribe((user: User) => {
+        if (user.error) {
+          this.snackBar.open(Strings[user.error.message], Strings.Ok);
+          return;
+        }
+
         this.user = user;
       });
     });
