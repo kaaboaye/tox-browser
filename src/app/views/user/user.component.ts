@@ -37,7 +37,7 @@ export class UserComponent implements OnInit {
   }
 
   changePasswordClick() {
-    const  dialog = this.dialog.open(UserChangePasswordComponent, {
+    const dialog = this.dialog.open(UserChangePasswordComponent, {
       data: new UserChangePassword(this.user)
     });
 

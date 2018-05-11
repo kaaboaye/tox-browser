@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { Strings } from '../../strings';
 import { Paths } from '../../routes';
+import { UserRank } from '../../models/user/user';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   t = Strings;
+  Rank = UserRank;
   Paths = Paths;
 
   ngOnInit() {

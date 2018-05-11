@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Strings } from '../../../strings';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { User } from '../../../models/user/user';
+import { User, UserRank } from '../../../models/user/user';
 
 @Component({
   selector: 'app-user-new',
@@ -16,13 +16,14 @@ export class UserNewComponent implements OnInit {
   ) { }
 
   t = Strings;
+  Rank = UserRank;
   @Input() user: User;
 
   ngOnInit() {
     this.user = this.data;
   }
 
-  change() {
+  add() {
     this.dialogRef.close(this.user);
   }
 }

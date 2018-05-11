@@ -25,7 +25,7 @@ export class AuthService {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {
     if (KeepSession) {
       this.Token = localStorage.token || undefined;
@@ -54,6 +54,7 @@ export class AuthService {
 
         this.Token = session.token;
         this.ExpireAt = session.expireAt;
+        this.User = session.user;
         this.Authenticated = true;
 
         if (KeepSession) {
@@ -88,6 +89,12 @@ export class AuthService {
       .subscribe(res => {
       this.Authenticated = !!res.session;
     });
+
+    if (!this.User) {
+      (this.http.get(ApiUrl + '/users/me', options) as Observable<User>).subscribe(user => {
+        this.User = user;
+      });
+    }
 
     return this.Authenticated;
   }

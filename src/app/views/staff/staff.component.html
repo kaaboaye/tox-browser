@@ -10,11 +10,11 @@
   <tr>
 
     <th>
-      {{ t.Username }}
+      {{ t.FullName }}
     </th>
 
     <th>
-      {{ t.FullName }}
+      {{ t.Username }}
     </th>
 
     <th>
@@ -32,12 +32,12 @@
     <tr *ngFor="let user of staff">
 
       <td>
-        {{ user.username }}
+        {{ user.identity.firstName }}
+        {{ user.identity.lastName }}
       </td>
 
       <td>
-        {{ user.identity.firstName }}
-        {{ user.identity.lastName }}
+        <a [routerLink]="['/user', user.id]">{{ user.username }}</a>
       </td>
 
       <td>
