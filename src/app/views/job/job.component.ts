@@ -10,6 +10,8 @@ import { JobDiagnosisService } from '../../models/job-diagnosis/job-diagnosis.se
 import { JobOrdersService } from '../../models/job-order/job-orders.service';
 import { JobCompletionService } from '../../models/job-completion/job-completion.service';
 import { JobClosureService } from '../../models/job-closure/job-closure.service';
+import { Group } from '../../RankGroups';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-job',
@@ -20,6 +22,7 @@ export class JobComponent implements OnInit {
 
   constructor(
     public route: ActivatedRoute,
+    public auth: AuthService,
     public jobsService: JobsService,
     public jobRegistrationService: JobRegistrationService,
     public jobDiagnoseService: JobDiagnosisService,
@@ -32,6 +35,7 @@ export class JobComponent implements OnInit {
   jobId: number;
   job: Job;
   JobState = JobState;
+  Group = Group;
   selectedTab: number;
   loading = true;
 

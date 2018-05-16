@@ -1,16 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Job } from '../../../models/job/job';
 import { Strings } from '../../../strings';
 import { JobRegistration, JobRegistrationType } from '../../../models/job-registration/job-registration';
-import { Person } from '../../../models/person/person';
-import { PeopleService } from '../../../models/person/people.service';
 
 @Component({
   selector: 'app-job-register',
   templateUrl: './job-register.component.html',
   styleUrls: ['./job-register.component.scss']
 })
-export class JobRegisterComponent implements OnInit {
+export class JobRegisterComponent implements OnInit, OnChanges {
 
   constructor() { }
 
@@ -19,8 +17,18 @@ export class JobRegisterComponent implements OnInit {
   t = Strings;
   registerType = JobRegistrationType;
 
+  init() {
+    if (!this.job.registration) {
+      this.job.registration = new JobRegistration();
+    }
+  }
+
   ngOnInit() {
-    this.job.registration = new JobRegistration();
+    this.init();
+  }
+
+  ngOnChanges() {
+    this.init();
   }
 
   add() {

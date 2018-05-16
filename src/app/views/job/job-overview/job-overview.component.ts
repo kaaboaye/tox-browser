@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Strings } from '../../../strings';
 import { Job } from '../../../models/job/job';
 import { JobState } from '../../../models/job/job-state.enum';

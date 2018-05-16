@@ -16,8 +16,18 @@ export class JobOrderComponent implements OnInit {
   @Output() submit: EventEmitter<any> = new EventEmitter();
   t = Strings;
 
+  init() {
+    if (!this.job.order) {
+      this.job.order = new JobOrder();
+    }
+  }
+
   ngOnInit() {
-    this.job.order = new JobOrder();
+    this.init();
+  }
+
+  ngOnChanges() {
+    this.init();
   }
 
   add() {

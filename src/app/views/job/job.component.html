@@ -16,31 +16,46 @@
 
   </mat-tab>
 
-  <mat-tab *ngIf="job.state === JobState.Created" label="{{ t.JobRegister }}">
+  <mat-tab
+    *ngIf="job.state === JobState.Created ||
+      (Group.IsMember(auth.User, Group.UpdateJob) && job.state >= JobState.Created)"
+    label="{{ t.JobRegister }}">
 
     <app-job-register [job]="job" (submit)="jobRegister($event)"></app-job-register>
 
   </mat-tab>
 
-  <mat-tab *ngIf="job.state === JobState.Registered" label="{{ t.JobDiagnose }}">
+  <mat-tab
+    *ngIf="job.state === JobState.Registered ||
+      (Group.IsMember(auth.User, Group.UpdateJob) && job.state >= JobState.Registered)"
+    label="{{ t.JobDiagnose }}">
 
     <app-job-diagnosis [job]="job" (submit)="jobDiagnose($event)"></app-job-diagnosis>
 
   </mat-tab>
 
-  <mat-tab *ngIf="job.state === JobState.Diagnosed" label="{{ t.Order }}">
+  <mat-tab
+    *ngIf="job.state === JobState.Diagnosed ||
+      (Group.IsMember(auth.User, Group.UpdateJob) && job.state >= JobState.Diagnosed)"
+    label="{{ t.Order }}">
 
     <app-job-order [job]="job" (submit)="jobOrder($event)"></app-job-order>
 
   </mat-tab>
 
-  <mat-tab *ngIf="job.state === JobState.Ordered" label="{{ t.Completion }}">
+  <mat-tab
+    *ngIf="job.state === JobState.Ordered ||
+      (Group.IsMember(auth.User, Group.UpdateJob) && job.state >= JobState.Ordered)"
+    label="{{ t.Completion }}">
 
     <app-job-completion [job]="job" (submit)="jobCompletion($event)"></app-job-completion>
 
   </mat-tab>
 
-  <mat-tab *ngIf="job.state === JobState.Finished" label="{{ t.Completion }}">
+  <mat-tab
+    *ngIf="job.state === JobState.Finished ||
+      (Group.IsMember(auth.User, Group.UpdateJob) && job.state >= JobState.Finished)"
+    label="{{ t.Completion }}">
 
     <app-job-closure [job]="job" (submit)="jobClosure($event)"></app-job-closure>
 

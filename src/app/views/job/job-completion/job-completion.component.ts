@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Strings } from '../../../strings';
 import { Job } from '../../../models/job/job';
 import { JobCompletion } from '../../../models/job-completion/job-completion';
@@ -10,7 +10,7 @@ import { PeopleService } from '../../../models/person/people.service';
   templateUrl: './job-completion.component.html',
   styleUrls: ['./job-completion.component.scss']
 })
-export class JobCompletionComponent implements OnInit {
+export class JobCompletionComponent implements OnInit, OnChanges {
 
   constructor(
     public peopleService: PeopleService
@@ -21,11 +21,21 @@ export class JobCompletionComponent implements OnInit {
   t = Strings;
   staff: Person[];
 
+  init() {
+    if (!this.job.completion) {
+      this.job.completion = new JobCompletion();
+    }
+  }
+
   ngOnInit() {
-    this.job.completion = new JobCompletion();
+    this.init();
 
     this.peopleService.GetStaff(0)
       .subscribe(staff => this.staff = staff);
+  }
+
+  ngOnChanges() {
+    this.init();
   }
 
   add() {

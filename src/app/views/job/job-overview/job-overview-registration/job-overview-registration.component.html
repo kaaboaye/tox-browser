@@ -2,7 +2,7 @@
   <h2 class="JobStateRegistered">{{ t.Registration }}</h2>
 
   <p class="vc">
-    <i *ngIf="job.registration.prev" class="fa fa-chevron-circle-left"></i>
+    <i *ngIf="job.registration.prev" (click)="prev()" class="fa fa-chevron-circle-left"></i>
   </p>
 
   <p>

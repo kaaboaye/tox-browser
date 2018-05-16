@@ -3,6 +3,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Strings } from '../../strings';
 import { Paths } from '../../routes';
 import { UserRank } from '../../models/user/user';
+import { Group } from '../../RankGroups';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +17,8 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   t = Strings;
-  Rank = UserRank;
   Paths = Paths;
+  Group = Group;
 
   ngOnInit() {
   }

@@ -4,6 +4,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Job } from '../job/job';
 import { ApiUrl } from '../../config';
 import { Observable } from 'rxjs/Observable';
+import { JobRegistration } from './job-registration';
 
 @Injectable()
 export class JobRegistrationService {
@@ -23,5 +24,9 @@ export class JobRegistrationService {
 
   Post(job: Job): Observable<any> {
     return this.http.post(this.url, job, this.httpOptions);
+  }
+
+  Prev(jobRegistration: JobRegistration): Observable<any> {
+    return this.http.get(this.url + `/${jobRegistration.id}/prev`, this.httpOptions);
   }
 }

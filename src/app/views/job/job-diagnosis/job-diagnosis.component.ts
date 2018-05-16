@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Strings } from '../../../strings';
 import { Job } from '../../../models/job/job';
 import { JobDiagnosis } from '../../../models/job-diagnosis/job-diagnosis';
@@ -11,7 +11,7 @@ import { PeopleService } from '../../../models/person/people.service';
   templateUrl: './job-diagnosis.component.html',
   styleUrls: ['./job-diagnosis.component.scss']
 })
-export class JobDiagnosisComponent implements OnInit {
+export class JobDiagnosisComponent implements OnInit, OnChanges {
 
   constructor(
     public peopleService: PeopleService
@@ -23,11 +23,21 @@ export class JobDiagnosisComponent implements OnInit {
   repairType = JobRepairType;
   staff: Person[];
 
+  init() {
+    if (!this.job.diagnosis) {
+      this.job.diagnosis = new JobDiagnosis();
+    }
+  }
+
   ngOnInit() {
-    this.job.diagnosis = new JobDiagnosis();
+    this.init();
 
     this.peopleService.GetStaff(0)
       .subscribe(staff => this.staff = staff);
+  }
+
+  ngOnChanges() {
+    this.init();
   }
 
   add() {
