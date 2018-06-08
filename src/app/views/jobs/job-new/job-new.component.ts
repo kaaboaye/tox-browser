@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { Job } from '../../../models/job/job';
 import { Client } from '../../../models/client/client';
 import { Device } from '../../../models/device/device';
@@ -9,6 +9,8 @@ import { Strings } from '../../../strings';
 import { PeopleService } from '../../../models/person/people.service';
 import { Person } from '../../../models/person/person';
 import { JobRegistrationType } from '../../../models/job-registration/job-registration';
+import { DeviceNewComponent } from '../../devices/device-new/device-new.component';
+import { ClientPersonNewComponent } from '../../client/client-person-new/client-person-new.component';
 
 @Component({
   selector: 'app-job-new',
@@ -22,7 +24,8 @@ export class JobNewComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Job,
     public devicesService: DevicesService,
     public clientsService: ClientService,
-    public peopleService: PeopleService
+    public peopleService: PeopleService,
+    private dialog: MatDialog
   ) { }
 
   t = Strings;
@@ -80,5 +83,41 @@ export class JobNewComponent implements OnInit {
 
   add() {
     this.dialogRef.close(true);
+  }
+
+  addDevice() {
+    const dialog = this.dialog.open(DeviceNewComponent, {
+      data: this.job.client
+    });
+
+    dialog.afterClosed().subscribe((newDevice: Device) => {
+      if (!newDevice) {
+        return;
+      }
+
+      this.devicesService.Post(newDevice).subscribe(device => {
+        this.pullDevices();
+        this.job.device = device;
+      });
+
+    });
+  }
+
+  addContract() {
+    const dialog = this.dialog.open(ClientPersonNewComponent, {
+      data: this.job.client
+    });
+
+    dialog.afterClosed().subscribe(contact => {
+      if (!contact) {
+        return;
+      }
+
+      this.peopleService.Post(contact)
+        .subscribe(newContact => {
+          this.pullContacts();
+          this.job.applicant = newContact;
+        });
+    });
   }
 }

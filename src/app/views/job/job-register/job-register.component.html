@@ -1,42 +1,52 @@
 <div *ngIf="job" class="container">
 
-  <mat-select
-    placeholder="{{ t.JobRegisterType }}"
-    [(ngModel)]="job.registration.type">
+  <form (submit)="$event.preventDefault(); add()" ngNativeValidate>
 
-    <mat-option>
-      {{ t.JobRegisterType }}
-    </mat-option>
+    <mat-select
+      placeholder="{{ t.JobRegisterType }}"
+      [(ngModel)]="job.registration.type"
+      name="type"
+      required>
 
-    <mat-option
-      [value]="registerType.Warranty">
+      <mat-option>
+        {{ t.JobRegisterType }}
+      </mat-option>
 
-      {{ t.Warranty }}
-    </mat-option>
+      <mat-option
+        [value]="registerType.Warranty">
 
-    <mat-option
-      [value]="registerType.PostWarranty">
+        {{ t.Warranty }}
+      </mat-option>
 
-      {{ t.PostWarranty }}
-    </mat-option>
+      <mat-option
+        [value]="registerType.PostWarranty">
 
-  </mat-select>
+        {{ t.PostWarranty }}
+      </mat-option>
+
+    </mat-select>
 
 
-  <mat-form-field>
-    <input matInput
-           placeholder="{{ t.PlaceOfRealisation }}"
-           [(ngModel)]="job.registration.placeOfRealisation">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             placeholder="{{ t.PlaceOfRealisation }}"
+             [(ngModel)]="job.registration.placeOfRealisation"
+             name="place"
+             required>
+    </mat-form-field>
 
-  <mat-form-field>
+    <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
               placeholder="{{ t.Description }}"
               [(ngModel)]="job.registration.description"
-              >
+              name="description"
+              required
+    >
     </textarea>
-  </mat-form-field>
+    </mat-form-field>
 
-  <button mat-button (click)="add()">{{ t.Save }}</button>
+    <button mat-button type="submit">{{ t.Save }}</button>
+
+  </form>
 
 </div>

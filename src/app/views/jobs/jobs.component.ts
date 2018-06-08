@@ -51,6 +51,10 @@ export class JobsComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe(response => {
+      if (!response) {
+        return;
+      }
+
       const registration = new JobRegistration();
       registration.description = job.registration.description;
       registration.type = job.registration.type;

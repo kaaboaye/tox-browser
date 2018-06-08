@@ -116,5 +116,6 @@ export const Strings = {
   Registration: 'Rejestracja',
   NoSuchUser: 'Podany użytkownik nie istnieje',
   BadPassword: 'Złe hasło',
-  PasswordsNotEqual: 'Hasła nie są identyczne'
+  PasswordsNotEqual: 'Hasła nie są identyczne',
+  AddClient: 'Dodaj klienta'
 };

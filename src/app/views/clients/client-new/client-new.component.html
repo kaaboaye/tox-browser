@@ -1,27 +1,40 @@
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.Name }}"
-         [(ngModel)]="client.name">
-</mat-form-field>
+<h2>{{t.AddClient}}</h2>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.Street }}"
-         [(ngModel)]="client.street">
-</mat-form-field>
+<form (submit)="$event.preventDefault(); add()" ngNativeValidate>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.Name }}"
+           name="name"
+           [(ngModel)]="client.name"
+           required>
+  </mat-form-field>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.PostalCode }}"
-         [(ngModel)]="client.postalCode">
-</mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.Street }}"
+           name="street"
+           [(ngModel)]="client.street"
+           required>
+  </mat-form-field>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.City }}"
-         [(ngModel)]="client.city">
-</mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.PostalCode }}"
+           name="postalCode"
+           [(ngModel)]="client.postalCode"
+           pattern="[0-9]{2}-[0-9]{3}"
+           required>
+  </mat-form-field>
 
-<button mat-button (click)="add()">{{ t.Add }}</button>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.City }}"
+           name="city"
+           [(ngModel)]="client.city"
+           required>
+  </mat-form-field>
+
+  <button mat-button type="submit">{{ t.Add }}</button>
+</form>
 
 

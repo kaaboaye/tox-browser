@@ -1,50 +1,71 @@
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.FirstName }}"
-         [(ngModel)]="user.identity.firstName">
-</mat-form-field>
+<form (submit)="$event.preventDefault(); add()" ngNativeValidate>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.LastName }}"
-         [(ngModel)]="user.identity.lastName">
-</mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.FirstName }}"
+           [(ngModel)]="user.identity.firstName"
+           pattern="([A-ZĘÓĄŚŁŻŹĆŃ])([a-zęóąśłżźćń]{2,})"
+           name="firstName"
+           required>
+  </mat-form-field>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.Email }}"
-         [(ngModel)]="user.identity.email">
-</mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.LastName }}"
+           [(ngModel)]="user.identity.lastName"
+           name="lastName"
+           pattern="([A-ZĘÓĄŚŁŻŹĆŃ])([a-zęóąśłżźćń-]{2,})"
+           required>
+  </mat-form-field>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.PhoneNumber }}"
-         [(ngModel)]="user.identity.phoneNumber">
-</mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.Email }}"
+           [(ngModel)]="user.identity.email"
+           name="email"
+           type="email"
+           required>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-select
-        placeholder="{{ t.Rank }}"
-        [(ngModel)]="user.rank">
-    <mat-option [value]="Rank.Serviceman">{{ t.Serviceman }}</mat-option>
-    <mat-option [value]="Rank.Manager">{{ t.Manager }}</mat-option>
-    <mat-option [value]="Rank.Admin">{{ t.Admin }}</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.PhoneNumber }}"
+           [(ngModel)]="user.identity.phoneNumber"
+           name="phone"
+           type="tel"
+           required>
+  </mat-form-field>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.Username }}"
-         [(ngModel)]="user.username">
-</mat-form-field>
+  <mat-form-field>
+    <mat-select
+      placeholder="{{ t.Rank }}"
+      [(ngModel)]="user.rank"
+      name="rank"
+      required>
 
-<mat-form-field>
-  <input matInput
-         type="password"
-         placeholder="{{ t.Password }}"
-         [(ngModel)]="user.password">
-</mat-form-field>
+      <mat-option [value]="Rank.Serviceman">{{ t.Serviceman }}</mat-option>
+      <mat-option [value]="Rank.Manager">{{ t.Manager }}</mat-option>
+      <mat-option [value]="Rank.Admin">{{ t.Admin }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<button mat-button (click)="add()">{{ t.Add }}</button>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.Username }}"
+           [(ngModel)]="user.username"
+           name="username"
+           required>
+  </mat-form-field>
 
+  <mat-form-field>
+    <input matInput
+           type="password"
+           placeholder="{{ t.Password }}"
+           [(ngModel)]="user.password"
+           name="password"
+           required>
+  </mat-form-field>
 
+  <button mat-button type="submit">{{ t.Add }}</button>
+
+</form>

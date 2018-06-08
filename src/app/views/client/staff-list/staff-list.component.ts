@@ -33,7 +33,12 @@ export class StaffListComponent implements OnInit {
       data: contact
     });
 
-    dialog.afterClosed().subscribe(person => {
+    dialog.afterClosed().subscribe(isOk => {
+      if (!isOk) {
+        this.Pull();
+        return;
+      }
+
       this.service.Patch(contact)
         .subscribe(newPerson => {
           contact = newPerson;

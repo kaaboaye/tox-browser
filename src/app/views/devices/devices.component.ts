@@ -43,6 +43,9 @@ export class DevicesComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe((newDevice: Device) => {
+      if (!newDevice) {
+        return;
+      }
 
       this.devicesService.Post(newDevice).subscribe(device => {
         this.devicesList.devices.push(device);

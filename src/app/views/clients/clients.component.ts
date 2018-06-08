@@ -29,6 +29,10 @@ export class ClientsComponent implements OnInit {
     const dialog = this.dialog.open(ClientNewComponent);
 
     dialog.afterClosed().subscribe((newClient: Client) => {
+      if (!newClient) {
+        return;
+      }
+
       this.clientService.Post(newClient)
         .subscribe((client: Client) => {
           this.list.clients.push(client);

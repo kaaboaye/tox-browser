@@ -1,48 +1,62 @@
 <div *ngIf="job" class="container">
 
-  <mat-form-field>
-    <input matInput
-           type="date"
-           placeholder="{{ t.CompletionDate }}"
-           [(ngModel)]="job.completion.date">
-  </mat-form-field>
+  <form (submit)="$event.preventDefault(); add()" ngNativeValidate>
 
-  <mat-form-field>
+    <mat-form-field>
+      <input matInput
+             type="date"
+             placeholder="{{ t.CompletionDate }}"
+             [(ngModel)]="job.completion.date"
+             name="date"
+             required>
+    </mat-form-field>
+
+    <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
               placeholder="{{ t.Description }}"
               [(ngModel)]="job.completion.description"
+              name="description"
+              required
     >
     </textarea>
-  </mat-form-field>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput
-           placeholder="{{ t.RepairTime }}"
-           [(ngModel)]="job.completion.repairTime">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             placeholder="{{ t.RepairTime }}"
+             [(ngModel)]="job.completion.repairTime"
+             name="repairTime"
+             required>
+    </mat-form-field>
 
-  <mat-form-field>
+    <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
               placeholder="{{ t.Annotations }}"
               [(ngModel)]="job.completion.annotations"
+              name="annotations"
+              required
     >
     </textarea>
-  </mat-form-field>
+    </mat-form-field>
 
-  <mat-select
-    *ngIf="staff"
-    placeholder="{{ t.Serviceman }}"
-    [(ngModel)]="job.completion.serviceman">
+    <mat-select
+      *ngIf="staff"
+      placeholder="{{ t.Serviceman }}"
+      [(ngModel)]="job.completion.serviceman"
+      name="serviceman"
+      required>
 
-    <mat-option
-      *ngFor="let person of staff"
-      [value]="person">
+      <mat-option
+        *ngFor="let person of staff"
+        [value]="person">
 
-      {{ person.firstName }}
-      {{ person.lastName }}
-    </mat-option>
-  </mat-select>
+        {{ person.firstName }}
+        {{ person.lastName }}
+      </mat-option>
+    </mat-select>
 
-  <button mat-button (click)="add()">{{ t.Save }}</button>
+    <button mat-button type="submit">{{ t.Save }}</button>
+
+  </form>
 
 </div>

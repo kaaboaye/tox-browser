@@ -1,18 +1,20 @@
 <div id="Login">
-  <label>
-    {{ t.Username }}
-    <input
-      [(ngModel)]="user.username"
-      placeholder="{{ t.Username }}">
-  </label>
 
-  <label>
-    {{ t.Password }}
+  <mat-form-field>
     <input
+      matInput
+      [(ngModel)]="user.username"
+      name="username"
+      placeholder="{{ t.Username }}">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
       type="password"
       [(ngModel)]="user.password"
       placeholder="{{ t.Password }}">
-  </label>
+  </mat-form-field>
 
   <button (click)="login()">{{ t.Login }}</button>
 </div>

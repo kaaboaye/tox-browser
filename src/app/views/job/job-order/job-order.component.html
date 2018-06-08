@@ -1,29 +1,38 @@
 <div *ngIf="job" class="container">
 
-  <mat-form-field>
+  <form (submit)="$event.preventDefault(); add()" ngNativeValidate>
+
+    <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
               placeholder="{{ t.NumberSAP }}"
               [(ngModel)]="job.order.numberSAP"
+              name="sap"
+              required
     >
     </textarea>
-  </mat-form-field>
+    </mat-form-field>
 
-  <mat-form-field>
+    <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
               placeholder="{{ t.PurchaseOrder }}"
               [(ngModel)]="job.order.purchaseOrder"
+              name="order"
+              required
     >
     </textarea>
-  </mat-form-field>
+    </mat-form-field>
 
-  <mat-form-field>
+    <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
               placeholder="{{ t.ClientsOrder }}"
               [(ngModel)]="job.order.clientsOrder"
+              required
     >
     </textarea>
-  </mat-form-field>
+    </mat-form-field>
 
-  <button mat-button (click)="add()">{{ t.Save }}</button>
+    <button mat-button type="submit">{{ t.Save }}</button>
+
+  </form>
 
 </div>

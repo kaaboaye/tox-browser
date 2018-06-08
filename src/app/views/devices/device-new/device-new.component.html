@@ -1,37 +1,49 @@
 <h2>{{ t.AddDevice }}</h2>
 
-<mat-form-field *ngIf="askOwner">
-  <mat-select
-    placeholder="{{ t.Client }}"
-    [(ngModel)]="device.owner">
 
-    <mat-option
-      *ngFor="let client of clients"
-      [value]="client">
+<form (submit)="$event.preventDefault(); add()" ngNativeValidate>
 
-      {{ client.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field *ngIf="askOwner">
+    <mat-select
+      placeholder="{{ t.Client }}"
+      [(ngModel)]="device.owner"
+      name="owner">
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.DeviceType }}"
-         [(ngModel)]="device.type">
-</mat-form-field>
+      <mat-option
+        *ngFor="let client of clients"
+        [value]="client">
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.DeviceDenotement }}"
-         [(ngModel)]="device.denotement">
-</mat-form-field>
+        {{ client.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<mat-form-field>
-  <input matInput
-         placeholder="{{ t.SerialNumber }}"
-         [(ngModel)]="device.serialNumber">
-</mat-form-field>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.DeviceType }}"
+           [(ngModel)]="device.type"
+           name="type"
+           required>
+  </mat-form-field>
 
-<button mat-button (click)="add()">{{ t.Add }}</button>
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.DeviceDenotement }}"
+           [(ngModel)]="device.denotement"
+           name="denotement"
+           required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput
+           placeholder="{{ t.SerialNumber }}"
+           [(ngModel)]="device.serialNumber"
+           name="serialNumber"
+           required>
+  </mat-form-field>
+
+  <button mat-button type="submit">{{ t.Add }}</button>
+
+</form>
 
 

@@ -2,95 +2,117 @@
 
 <div *ngIf="job">
 
-  <mat-form-field *ngIf="askClient && clients">
-    <mat-select
-      placeholder="{{ t.Client }}"
-      [(ngModel)]="job.client"
-      (change)="clientChanged()">
+  <form (submit)="$event.preventDefault(); add()" ngNativeValidate>
 
-      <mat-option
-        [value]="{id :0}">
+    <mat-form-field *ngIf="askClient && clients">
+      <mat-select
+        placeholder="{{ t.Client }}"
+        [(ngModel)]="job.client"
+        (change)="clientChanged()"
+        name="client"
+        required>
 
-        {{ t.Client }}
-      </mat-option>
+        <mat-option
+          [value]="{id :0}">
 
-      <mat-option
-        *ngFor="let client of clients"
-        [value]="client">
+          {{ t.Client }}
+        </mat-option>
 
-        {{ client.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+        <mat-option
+          *ngFor="let client of clients"
+          [value]="client">
 
-  <mat-form-field *ngIf="devices && job.client">
-    <mat-select
-      placeholder="{{ t.Device }}"
-      [(ngModel)]="job.device"
-      (change)="deviceChanged()">
+          {{ client.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <mat-option
-        *ngFor="let device of devices"
-        [value]="device">
+    <mat-form-field *ngIf="devices && job.client">
+      <mat-select
+        placeholder="{{ t.Device }}"
+        [(ngModel)]="job.device"
+        (change)="deviceChanged()"
+        name="device"
+        required>
 
-        {{ device.type }}
-        {{ device.denotement}}
-        {{ device.serialNumber }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+        <mat-option
+          *ngFor="let device of devices"
+          [value]="device">
 
-  <mat-form-field *ngIf="contacts && job.client">
-    <mat-select
-      placeholder="{{ t.Contact }}"
-      [(ngModel)]="job.applicant">
+          {{ device.type }}
+          {{ device.denotement}}
+          {{ device.serialNumber }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-      <mat-option
-        *ngFor="let contact of contacts"
-        [value]="contact">
+    <button *ngIf="job.client.id" mat-button (click)="addDevice()">{{t.AddDevice}}</button>
 
-        {{ contact.firstName }}
-        {{ contact.lastName }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field *ngIf="contacts && job.client">
+      <mat-select
+        placeholder="{{ t.Contact }}"
+        [(ngModel)]="job.applicant"
+        name="appicant"
+        required>
 
-  <mat-select
-    placeholder="{{ t.JobRegisterType }}"
-    [(ngModel)]="job.registration.type">
+        <mat-option
+          *ngFor="let contact of contacts"
+          [value]="contact">
 
-    <mat-option>
-      {{ t.JobRegisterType }}
-    </mat-option>
+          {{ contact.firstName }}
+          {{ contact.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <mat-option
-      [value]="registerType.Warranty">
+    <button *ngIf="job.client.id" mat-button (click)="addContract()">{{t.AddContact}}</button>
 
-      {{ t.Warranty }}
-    </mat-option>
+    <mat-form-field>
 
-    <mat-option
-      [value]="registerType.PostWarranty">
+      <mat-select
+        placeholder="{{ t.JobRegisterType }}"
+        [(ngModel)]="job.registration.type"
+        name="type"
+        required>
 
-      {{ t.PostWarranty }}
-    </mat-option>
+        <mat-option>
+          {{ t.JobRegisterType }}
+        </mat-option>
 
-  </mat-select>
+        <mat-option
+          [value]="registerType.Warranty">
 
-  <mat-form-field>
-    <input matInput
-           placeholder="{{ t.PlaceOfRealisation }}"
-           [(ngModel)]="job.registration.placeOfRealisation">
-  </mat-form-field>
+          {{ t.Warranty }}
+        </mat-option>
 
-  <mat-form-field>
+        <mat-option
+          [value]="registerType.PostWarranty">
+
+          {{ t.PostWarranty }}
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             placeholder="{{ t.PlaceOfRealisation }}"
+             [(ngModel)]="job.registration.placeOfRealisation"
+             name="place"
+             required>
+    </mat-form-field>
+
+    <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
               placeholder="{{ t.Description }}"
               [(ngModel)]="job.registration.description"
-    >
-    </textarea>
-  </mat-form-field>
+              name="description"
+              required></textarea>
+    </mat-form-field>
 
-  <button mat-button (click)="add()">{{ t.Add }}</button>
+    <button mat-button type="submit">{{ t.Add }}</button>
+
+  </form>
 
 </div>

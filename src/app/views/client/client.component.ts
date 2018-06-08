@@ -60,6 +60,10 @@ export class ClientComponent implements OnInit {
     });
 
     dialog.afterClosed().subscribe(contact => {
+      if (!contact) {
+        return;
+      }
+
       this.peopleService.Post(contact)
         .subscribe(newContact => {
           this.staff.staff.push(newContact);

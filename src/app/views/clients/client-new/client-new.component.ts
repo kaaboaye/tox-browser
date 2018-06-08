@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { Strings } from '../../../strings';
 import { Person } from '../../../models/person/person';
 import { Client } from '../../../models/client/client';
@@ -17,13 +17,13 @@ export class ClientNewComponent implements OnInit {
 
   t = Strings;
   @Input() client: Client;
+  @ViewChild('form') form;
 
   ngOnInit() {
     this.client = new Client();
   }
 
-  add() {
+  add(e) {
     this.dialogRef.close(this.client);
   }
-
 }
