@@ -56,6 +56,10 @@ import { JobOverviewRegistrationComponent } from './views/job/job-overview/job-o
 import { StaffComponent } from './views/staff/staff.component';
 import { UserChangePasswordComponent } from './views/user/user-change-password/user-change-password.component';
 import { UserNewComponent } from './views/staff/user-new/user-new.component';
+import { JobOverviewDiagnosisComponent } from './views/job/job-overview/job-overview-diagnosis/job-overview-diagnosis.component';
+import { JobOverviewOrderComponent } from './views/job/job-overview/job-overview-order/job-overview-order.component';
+import { JobOverviewCompletionComponent } from './views/job/job-overview/job-overview-completion/job-overview-completion.component';
+import { JobOverviewClosureComponent } from './views/job/job-overview/job-overview-closure/job-overview-closure.component';
 
 
 @NgModule({
@@ -94,7 +98,11 @@ import { UserNewComponent } from './views/staff/user-new/user-new.component';
     JobOverviewRegistrationComponent,
     StaffComponent,
     UserChangePasswordComponent,
-    UserNewComponent
+    UserNewComponent,
+    JobOverviewDiagnosisComponent,
+    JobOverviewOrderComponent,
+    JobOverviewCompletionComponent,
+    JobOverviewClosureComponent
   ],
   entryComponents: [
     ClientPersonNewComponent,

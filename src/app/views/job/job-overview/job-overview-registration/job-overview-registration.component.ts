@@ -15,20 +15,14 @@ export class JobOverviewRegistrationComponent implements OnInit, OnChanges {
     public jobRegistrationService: JobRegistrationService
   ) { }
 
-  @Input() job: Job;
   t = Strings;
   JobRegistrationType = JobRegistrationType;
-  registrations: JobRegistration[];
-  cid = 0;
+
+  @Input() job: Job;
+  registration: JobRegistration;
 
   init() {
-    this.registrations = [
-      this.job.registration
-    ];
-
-    if (this.job.registration && this.job.registration.prev) {
-      this.registrations.push(this.job.registration.prev);
-    }
+    this.registration = { ...this.job.registration };
   }
 
   ngOnInit() {
@@ -40,15 +34,21 @@ export class JobOverviewRegistrationComponent implements OnInit, OnChanges {
   }
 
   prev() {
-    this.registrations.push(this.registrations[this.cid].prev);
-    ++this.cid;
-
-    if (this.cid + 1 === this.registrations.length) {
-      this.jobRegistrationService.Prev(this.registrations[this.cid])
-        .subscribe((jr: JobRegistration) => {
-          this.registrations[this.cid] = jr;
-        });
+    if (this.registration.prev) {
+      this.registration = this.registration.prev;
+      return;
     }
+
+    this.jobRegistrationService.Prev(this.registration)
+      .subscribe(prev => {
+        this.registration.prev = prev;
+        prev.next = this.registration;
+        this.registration = prev;
+      });
+  }
+
+  next() {
+    this.registration = this.registration.next;
   }
 
 }

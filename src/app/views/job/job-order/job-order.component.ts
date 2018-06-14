@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, OnChanges } from '@angular/core';
 import { Strings } from '../../../strings';
 import { Job } from '../../../models/job/job';
 import { JobOrder } from '../../../models/job-order/job-order';
@@ -8,7 +8,7 @@ import { JobOrder } from '../../../models/job-order/job-order';
   templateUrl: './job-order.component.html',
   styleUrls: ['./job-order.component.scss']
 })
-export class JobOrderComponent implements OnInit {
+export class JobOrderComponent implements OnInit, OnChanges {
 
   constructor() { }
 

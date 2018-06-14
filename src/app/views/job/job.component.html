@@ -55,7 +55,7 @@
   <mat-tab
     *ngIf="job.state === JobState.Finished ||
       (Group.IsMember(auth.User, Group.UpdateJob) && job.state >= JobState.Finished)"
-    label="{{ t.Completion }}">
+    label="{{ t.Closure }}">
 
     <app-job-closure [job]="job" (submit)="jobClosure($event)"></app-job-closure>
 

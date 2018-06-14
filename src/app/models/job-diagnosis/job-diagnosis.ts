@@ -4,6 +4,8 @@ import { JobRepairType } from './job-repair-type.enum';
 export class JobDiagnosis {
   id: number;
   prev: JobDiagnosis;
+  prevId: number;
+  next: JobDiagnosis;
   createdAt: Date;
   diagnosis: string;
 

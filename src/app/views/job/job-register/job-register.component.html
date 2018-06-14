@@ -1,6 +1,6 @@
 <div *ngIf="job" class="container">
 
-  <form (submit)="$event.preventDefault(); add()" ngNativeValidate>
+  <form ngNativeValidate>
 
     <mat-select
       placeholder="{{ t.JobRegisterType }}"

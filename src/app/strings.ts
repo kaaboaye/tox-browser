@@ -60,6 +60,7 @@ export const Strings = {
   Ordered: 'Złożono zamówienie',
   Finished: 'Ukończono',
   Closed: 'Zamknięto',
+  Closure: 'Zamknięcie',
   Deleted: 'Usunięto',
   Job: 'Zlecenie',
   Dispatcher: 'Przyjmujący',

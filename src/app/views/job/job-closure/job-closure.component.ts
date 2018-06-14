@@ -26,8 +26,6 @@ export class JobClosureComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.init();
-
-    console.log(this.job);
   }
 
   ngOnChanges() {

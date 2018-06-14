@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import { ApiUrl } from '../../config';
 import { Job } from '../job/job';
+import { JobCompletion } from './job-completion';
 
 @Injectable()
 export class JobCompletionService {
@@ -23,5 +24,9 @@ export class JobCompletionService {
 
   Post(job: Job): Observable<any> {
     return this.http.post(this.url, job, this.httpOptions);
+  }
+
+  Prev(jobCompletion: JobCompletion): Observable<any> {
+    return this.http.get(`${this.url}/${jobCompletion.id}/prev`, this.httpOptions);
   }
 }

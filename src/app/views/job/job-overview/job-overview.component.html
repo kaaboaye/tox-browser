@@ -50,142 +50,19 @@
   </div>
 
   <div *ngIf="job.diagnosis && job.diagnosis.id" class="row part">
-
-    <div class="col">
-
-      <h2 class="JobStateDiagnosed">{{ t.JobDiagnose }}</h2>
-
-      <p class="pre">{{ job.diagnosis.diagnosis }}</p>
-
-      <p class="pre">{{ t.PartsToReplace }}:
-        {{ job.diagnosis.partsToReplace }}</p>
-
-      <div class="row">
-
-        <div class="col">
-
-          <app-person [person]="job.diagnosis.serviceman"></app-person>
-
-        </div>
-
-        <div class="col">
-
-          <p>{{ t.ExpertiseDate }}:
-            {{ job.diagnosis.expertiseDate | date:timeFormat }}</p>
-
-          <p>{{ t.EstimatedRepairTime }}:
-            {{ job.diagnosis.estimatedRepairTime }}</p>
-
-          <p>{{ t.RepairType }}:
-            {{ t[JobRepairType[job.diagnosis.repairType]] }}</p>
-
-        </div>
-
-      </div>
-
-      <div class="row">
-
-        <div class="col">
-
-          <p>{{ t.hydraulicNominalDimension }}: {{ job.diagnosis.hydraulicNominalDimension }}</p>
-          <p>{{ t.th01 }}: {{ job.diagnosis.th01 }}</p>
-          <p>{{ t.th02 }}: {{ job.diagnosis.th02 }}</p>
-          <p>{{ t.th03 }}: {{ job.diagnosis.th03 }}</p>
-          <p>{{ t.th91 }}: {{ job.diagnosis.th91 }}</p>
-          <p>{{ t.th92 }}: {{ job.diagnosis.th92 }}</p>
-          <p>{{ t.th93 }}: {{ job.diagnosis.th93 }}</p>
-
-        </div>
-
-        <div class="col">
-
-          <p>{{ t.pneumaticNominalDimension }}: {{ job.diagnosis.pneumaticNominalDimension }}</p>
-          <p>{{ t.tp01 }}: {{ job.diagnosis.tp01 }}</p>
-          <p>{{ t.tp02 }}: {{ job.diagnosis.tp02 }}</p>
-          <p>{{ t.tp03 }}: {{ job.diagnosis.tp03 }}</p>
-          <p>{{ t.tp91 }}: {{ job.diagnosis.tp91 }}</p>
-          <p>{{ t.tp92 }}: {{ job.diagnosis.tp92 }}</p>
-          <p>{{ t.tp93 }}: {{ job.diagnosis.tp93 }}</p>
-
-        </div>
-
-        <div class="col">
-
-          <p>{{ t.plungerNominalDimension }}: {{ job.diagnosis.plungerNominalDimension }}</p>
-          <p>{{ t.n01 }}: {{ job.diagnosis.n01 }}</p>
-          <p>{{ t.n02 }}: {{ job.diagnosis.n02 }}</p>
-          <p>{{ t.n03 }}: {{ job.diagnosis.n03 }}</p>
-          <p>{{ t.n91 }}: {{ job.diagnosis.n91 }}</p>
-          <p>{{ t.n92 }}: {{ job.diagnosis.n92 }}</p>
-          <p>{{ t.n93 }}: {{ job.diagnosis.n93 }}</p>
-
-        </div>
-
-      </div>
-
-    </div>
-
+    <app-job-overview-diagnosis class="col" [job]="job"></app-job-overview-diagnosis>
   </div>
 
   <div *ngIf="job.order && job.order.id" class="row part">
-
-    <div class="col">
-      <h2 class="JobStateOrdered">{{ t.Order }}</h2>
-
-      <p class="pre">{{ t.NumberSAP }}: {{ job.order.numberSAP }}</p>
-      <p class="pre">{{ t.PurchaseOrder }}: {{ job.order.purchaseOrder }}</p>
-      <p class="pre">{{ t.ClientsOrder }}: {{ job.order.clientsOrder }}</p>
-
-    </div>
-
+    <app-job-overview-order class="col" [job]="job"></app-job-overview-order>
   </div>
 
   <div *ngIf="job.completion && job.completion.id" class="row part">
-
-    <div class="col">
-      <h2 class="JobStateFinished">{{ t.Completion }}</h2>
-
-      <p class="pre">{{ t.Description }}: {{ job.completion.description }}</p>
-      <p class="pre">{{ t.Annotations }}: {{ job.completion.annotations }}</p>
-
-
-
-      <div class="row">
-
-        <div class="col">
-
-          <app-person [person]="job.completion.serviceman"></app-person>
-
-        </div>
-
-        <div class="col">
-
-          <p>{{ t.ExpertiseDate }}:
-            {{ job.completion.date | date:timeFormat }}</p>
-
-          <p>{{ t.RepairTime }}: {{ job.completion.repairTime }}</p>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
+    <app-job-overview-completion class="col" [job]="job"></app-job-overview-completion>
   </div>
 
   <div *ngIf="job.closure && job.closure.id" class="row part">
-
-    <div class="col">
-      <h2 class="JobStateClosed">{{ t.Closed }}</h2>
-
-      <p class="pre">{{ t.Annotations }}: {{ job.closure.annotations }}</p>
-
-      <p>{{ t.Closed }}:
-        {{ job.closure.dateOfClosure | date:timeFormat }}</p>
-
-    </div>
-
+    <app-job-overview-closure class="col" [job]="job"></app-job-overview-closure>
   </div>
 
 </div>

@@ -30,8 +30,4 @@ export class JobRegisterComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.init();
   }
-
-  add() {
-    this.submit.emit(null);
-  }
 }

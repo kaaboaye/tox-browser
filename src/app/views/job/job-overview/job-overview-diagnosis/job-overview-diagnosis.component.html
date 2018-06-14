@@ -1,0 +1,74 @@
+<h2 class="JobStateDiagnosed">{{ t.JobDiagnose }}</h2>
+
+<p class="vc">
+    <i *ngIf="diagnosis.prevId" (click)="prev()" class="fa fa-chevron-circle-left"></i>
+    <i *ngIf="diagnosis.next" (click)="next()" class="fa fa-chevron-circle-right"></i>
+</p>
+
+<p class="pre">{{ diagnosis.diagnosis }}</p>
+
+<p class="pre">{{ t.PartsToReplace }}:
+  {{ diagnosis.partsToReplace }}</p>
+
+<div class="row">
+
+  <div class="col">
+
+    <app-person [person]="diagnosis.serviceman"></app-person>
+
+  </div>
+
+  <div class="col">
+
+    <p>{{ t.ExpertiseDate }}:
+      {{ diagnosis.expertiseDate | date:timeFormat }}</p>
+
+    <p>{{ t.EstimatedRepairTime }}:
+      {{ diagnosis.estimatedRepairTime }}</p>
+
+    <p>{{ t.RepairType }}:
+      {{ t[JobRepairType[diagnosis.repairType]] }}</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col">
+
+    <p>{{ t.hydraulicNominalDimension }}: {{ diagnosis.hydraulicNominalDimension }}</p>
+    <p>{{ t.th01 }}: {{ diagnosis.th01 }}</p>
+    <p>{{ t.th02 }}: {{ diagnosis.th02 }}</p>
+    <p>{{ t.th03 }}: {{ diagnosis.th03 }}</p>
+    <p>{{ t.th91 }}: {{ diagnosis.th91 }}</p>
+    <p>{{ t.th92 }}: {{ diagnosis.th92 }}</p>
+    <p>{{ t.th93 }}: {{ diagnosis.th93 }}</p>
+
+  </div>
+
+  <div class="col">
+
+    <p>{{ t.pneumaticNominalDimension }}: {{ diagnosis.pneumaticNominalDimension }}</p>
+    <p>{{ t.tp01 }}: {{ diagnosis.tp01 }}</p>
+    <p>{{ t.tp02 }}: {{ diagnosis.tp02 }}</p>
+    <p>{{ t.tp03 }}: {{ diagnosis.tp03 }}</p>
+    <p>{{ t.tp91 }}: {{ diagnosis.tp91 }}</p>
+    <p>{{ t.tp92 }}: {{ diagnosis.tp92 }}</p>
+    <p>{{ t.tp93 }}: {{ diagnosis.tp93 }}</p>
+
+  </div>
+
+  <div class="col">
+
+    <p>{{ t.plungerNominalDimension }}: {{ diagnosis.plungerNominalDimension }}</p>
+    <p>{{ t.n01 }}: {{ diagnosis.n01 }}</p>
+    <p>{{ t.n02 }}: {{ diagnosis.n02 }}</p>
+    <p>{{ t.n03 }}: {{ diagnosis.n03 }}</p>
+    <p>{{ t.n91 }}: {{ diagnosis.n91 }}</p>
+    <p>{{ t.n92 }}: {{ diagnosis.n92 }}</p>
+    <p>{{ t.n93 }}: {{ diagnosis.n93 }}</p>
+
+  </div>
+
+</div>

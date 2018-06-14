@@ -1,0 +1,28 @@
+<h2 class="JobStateFinished">{{ t.Completion }}</h2>
+
+<p class="vc">
+    <i *ngIf="completion.prevId" (click)="prev()" class="fa fa-chevron-circle-left"></i>
+    <i *ngIf="completion.next" (click)="next()" class="fa fa-chevron-circle-right"></i>
+</p>
+
+<p class="pre">{{ t.Description }}: {{ completion.description }}</p>
+<p class="pre">{{ t.Annotations }}: {{ completion.annotations }}</p>
+
+<div class="row">
+
+  <div class="col">
+
+    <app-person [person]="completion.serviceman"></app-person>
+
+  </div>
+
+  <div class="col">
+
+    <p>{{ t.ExpertiseDate }}:
+      {{ completion.date | date:timeFormat }}</p>
+
+    <p>{{ t.RepairTime }}: {{ completion.repairTime }}</p>
+
+  </div>
+
+</div>

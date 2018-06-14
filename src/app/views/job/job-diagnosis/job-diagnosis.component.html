@@ -1,6 +1,6 @@
 <div *ngIf="job" class="container">
 
-  <form (submit)="$event.preventDefault(); add()" ngNativeValidate>
+  <form ngNativeValidate>
 
     <mat-form-field>
     <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
@@ -17,6 +17,7 @@
               placeholder="{{ t.PartsToReplace }}"
               [(ngModel)]="job.diagnosis.partsToReplace"
               name="partsToReplace"
+              required
     >
     </textarea>
     </mat-form-field>
@@ -58,6 +59,7 @@
           *ngIf="staff"
           placeholder="{{ t.Serviceman }}"
           [(ngModel)]="job.diagnosis.serviceman"
+          name="serviceman"
           required>
 
           <mat-option
@@ -76,6 +78,7 @@
         <mat-select
           placeholder="{{ t.RepairType }}"
           [(ngModel)]="job.diagnosis.repairType"
+          name="repairType"
           required>
 
           <mat-option>
@@ -107,6 +110,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="hnd"
                  placeholder="{{ t.hydraulicNominalDimension }}"
                  [(ngModel)]="job.diagnosis.hydraulicNominalDimension">
         </mat-form-field>
@@ -115,6 +119,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="th01"
                  placeholder="{{ t.th01 }}"
                  [(ngModel)]="job.diagnosis.th01">
         </mat-form-field>
@@ -123,6 +128,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="th02"
                  placeholder="{{ t.th02 }}"
                  [(ngModel)]="job.diagnosis.th02">
         </mat-form-field>
@@ -131,6 +137,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="th03"
                  placeholder="{{ t.th03 }}"
                  [(ngModel)]="job.diagnosis.th03">
         </mat-form-field>
@@ -139,6 +146,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="th91"
                  placeholder="{{ t.th91 }}"
                  [(ngModel)]="job.diagnosis.th91">
         </mat-form-field>
@@ -147,6 +155,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="th92"
                  placeholder="{{ t.th92 }}"
                  [(ngModel)]="job.diagnosis.th92">
         </mat-form-field>
@@ -155,6 +164,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="th93"
                  placeholder="{{ t.th93 }}"
                  [(ngModel)]="job.diagnosis.th93">
         </mat-form-field>
@@ -166,6 +176,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="pnd"
                  placeholder="{{ t.pneumaticNominalDimension }}"
                  [(ngModel)]="job.diagnosis.pneumaticNominalDimension">
         </mat-form-field>
@@ -174,6 +185,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="tp01"
                  placeholder="{{ t.tp01 }}"
                  [(ngModel)]="job.diagnosis.tp01">
         </mat-form-field>
@@ -182,6 +194,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="tp02"
                  placeholder="{{ t.tp02 }}"
                  [(ngModel)]="job.diagnosis.tp02">
         </mat-form-field>
@@ -190,6 +203,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="tp03"
                  placeholder="{{ t.tp03 }}"
                  [(ngModel)]="job.diagnosis.tp03">
         </mat-form-field>
@@ -198,6 +212,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="tp91"
                  placeholder="{{ t.tp91 }}"
                  [(ngModel)]="job.diagnosis.tp91">
         </mat-form-field>
@@ -206,6 +221,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="tp92"
                  placeholder="{{ t.tp92 }}"
                  [(ngModel)]="job.diagnosis.tp92">
         </mat-form-field>
@@ -214,6 +230,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="tp93"
                  placeholder="{{ t.tp93 }}"
                  [(ngModel)]="job.diagnosis.tp93">
         </mat-form-field>
@@ -225,6 +242,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="pnd"
                  placeholder="{{ t.plungerNominalDimension }}"
                  [(ngModel)]="job.diagnosis.plungerNominalDimension">
         </mat-form-field>
@@ -234,6 +252,7 @@
           <input matInput
                  type="number"
                  placeholder="{{ t.n01 }}"
+                 name="n01"
                  [(ngModel)]="job.diagnosis.n01">
         </mat-form-field>
 
@@ -242,6 +261,7 @@
           <input matInput
                  type="number"
                  placeholder="{{ t.n02 }}"
+                 name="n02"
                  [(ngModel)]="job.diagnosis.n02">
         </mat-form-field>
 
@@ -250,6 +270,7 @@
           <input matInput
                  type="number"
                  placeholder="{{ t.n03 }}"
+                 name="n03"
                  [(ngModel)]="job.diagnosis.n03">
         </mat-form-field>
 
@@ -257,6 +278,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="n91"
                  placeholder="{{ t.n91 }}"
                  [(ngModel)]="job.diagnosis.n91">
         </mat-form-field>
@@ -266,6 +288,7 @@
           <input matInput
                  type="number"
                  placeholder="{{ t.n92 }}"
+                 name="n92"
                  [(ngModel)]="job.diagnosis.n92">
         </mat-form-field>
 
@@ -273,6 +296,7 @@
         <mat-form-field>
           <input matInput
                  type="number"
+                 name="n93"
                  placeholder="{{ t.n93 }}"
                  [(ngModel)]="job.diagnosis.n93">
         </mat-form-field>

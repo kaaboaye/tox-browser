@@ -2,18 +2,19 @@
   <h2 class="JobStateRegistered">{{ t.Registration }}</h2>
 
   <p class="vc">
-    <i *ngIf="job.registration.prev" (click)="prev()" class="fa fa-chevron-circle-left"></i>
+    <i *ngIf="registration.prevId" (click)="prev()" class="fa fa-chevron-circle-left"></i>
+    <i *ngIf="registration.next" (click)="next()" class="fa fa-chevron-circle-right"></i>
   </p>
 
   <p>
     {{ t.JobRegisterType }}:
-    {{ t[JobRegistrationType[job.registration.type]]}}
+    {{ t[JobRegistrationType[registration.type]]}}
   </p>
 
   <p>
     {{ t.PlaceOfRealisation }}:
-    {{ job.registration.placeOfRealisation }}
+    {{ registration.placeOfRealisation }}
   </p>
 
-  <p class="pre">{{ t.Description }}: {{ job.registration.description }}</p>
+  <p class="pre">{{ t.Description }}: {{ registration.description }}</p>
 </div>

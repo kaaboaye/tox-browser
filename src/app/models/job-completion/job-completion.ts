@@ -4,6 +4,8 @@ export class JobCompletion {
 
   id: number;
   prev: JobCompletion;
+  prevId: number;
+  next: JobCompletion;
   createdAt: Date;
   date: Date;
   description: string;

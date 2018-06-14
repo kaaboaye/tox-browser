@@ -4,6 +4,7 @@ import { AuthService } from '../../auth/auth.service';
 import { ApiUrl } from '../../config';
 import { Job } from '../job/job';
 import { Observable } from 'rxjs/Observable';
+import { JobClosure } from './job-closure';
 
 @Injectable()
 export class JobClosureService {
@@ -23,6 +24,10 @@ export class JobClosureService {
 
   Post(job: Job): Observable<any> {
     return this.http.post(this.url, job, this.httpOptions);
+  }
+
+  Prev(jobClosure: JobClosure): Observable<any> {
+    return this.http.get(`${this.url}/${jobClosure.id}/prev`, this.httpOptions);
   }
 
 }

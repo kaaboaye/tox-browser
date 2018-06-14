@@ -40,7 +40,4 @@ export class JobDiagnosisComponent implements OnInit, OnChanges {
     this.init();
   }
 
-  add() {
-    this.submit.emit(null);
-  }
 }

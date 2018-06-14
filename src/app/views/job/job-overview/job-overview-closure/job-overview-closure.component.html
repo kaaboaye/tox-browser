@@ -1,0 +1,11 @@
+<h2 class="JobStateClosed">{{ t.Closed }}</h2>
+
+<p class="vc">
+    <i *ngIf="closure.prevId" (click)="prev()" class="fa fa-chevron-circle-left"></i>
+    <i *ngIf="closure.next" (click)="next()" class="fa fa-chevron-circle-right"></i>
+</p>
+
+<p class="pre">{{ t.Annotations }}: {{ closure.annotations }}</p>
+
+<p>{{ t.Closed }}:
+  {{ closure.dateOfClosure | date:timeFormat }}</p>

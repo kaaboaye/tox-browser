@@ -1,0 +1,10 @@
+<h2 class="JobStateOrdered">{{ t.Order }}</h2>
+
+<p class="vc">
+    <i *ngIf="order.prevId" (click)="prev()" class="fa fa-chevron-circle-left"></i>
+    <i *ngIf="order.next" (click)="next()" class="fa fa-chevron-circle-right"></i>
+</p>
+
+<p class="pre">{{ t.NumberSAP }}: {{ order.numberSAP }}</p>
+<p class="pre">{{ t.PurchaseOrder }}: {{ order.purchaseOrder }}</p>
+<p class="pre">{{ t.ClientsOrder }}: {{ order.clientsOrder }}</p>
